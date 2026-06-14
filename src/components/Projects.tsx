@@ -59,7 +59,7 @@ export default function Projects() {
     },
     {
       id: "04",
-      category: "MOBILE APP / PWA",
+      category: "SITIO WEB",
       title: "Arma tu Antojo",
       description: "Catálogo interactivo y Progressive Web App optimizada para pedidos móviles.",
       image: "/projects/armatuantojo-v2.png",
@@ -142,11 +142,7 @@ export default function Projects() {
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 45vw"
-                  className={`${
-                    project.objectFit === "contain"
-                      ? "object-contain p-2"
-                      : "object-cover object-top"
-                  } opacity-80 group-hover:opacity-95 group-hover:scale-[1.01] transition-all duration-500 ease-out`}
+                  className="object-cover object-top opacity-80 group-hover:opacity-95 group-hover:scale-[1.01] transition-all duration-500 ease-out"
                 />
               </div>
 
