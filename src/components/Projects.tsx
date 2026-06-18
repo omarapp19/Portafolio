@@ -27,7 +27,7 @@ export default function Projects() {
       title: "ASP Worship (Landing)",
       description: "Landing page oficial y presentación de la plataforma para coordinación musical.",
       image: "/projects/worship-app-v2.png",
-      tags: ["React", "Next.js", "Tailwind CSS"],
+      tags: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
       link: "https://www.aspworship.online/",
       colSpan: "lg:col-span-1",
       isWide: false,
@@ -40,7 +40,7 @@ export default function Projects() {
       title: "ASP Worship App APP",
       description: "Aplicación interactiva para coordinar repertorios y acordes en tiempo real.",
       image: "/projects/aspworship.png",
-      tags: ["React", "Node.js", "Cloudflare R2", "Firebase"],
+      tags: ["TypeScript", "React", "Node.js", "Firebase", "Cloudflare R2"],
       link: "https://app.aspworship.online/",
       colSpan: "lg:col-span-1",
       isWide: false,
@@ -52,7 +52,7 @@ export default function Projects() {
       title: "Pizza Builder",
       description: "Constructor interactivo en tiempo real para personalización de ingredientes y pedidos.",
       image: "/projects/pizza-builder-v2.png",
-      tags: ["React", "Tailwind CSS", "Framer Motion"],
+      tags: ["JavaScript", "React", "Tailwind CSS", "Framer Motion"],
       link: "https://pizzabuilder.vercel.app/",
       colSpan: "lg:col-span-1",
       isWide: false,
@@ -64,7 +64,7 @@ export default function Projects() {
       title: "Arma tu Antojo",
       description: "Catálogo interactivo y Progressive Web App optimizada para pedidos móviles.",
       image: "/projects/armatuantojo-v2.png",
-      tags: ["React", "Tailwind CSS", "Netlify"],
+      tags: ["JavaScript", "React", "Tailwind CSS", "Netlify"],
       link: "https://armatuantojo.netlify.app/",
       colSpan: "lg:col-span-1",
       isWide: false,
@@ -76,7 +76,7 @@ export default function Projects() {
       title: "Grupo Serex",
       description: "Portal corporativo de consultoría integral optimizado para SEO y alto rendimiento.",
       image: "/projects/gruposerex.png",
-      tags: ["Next.js", "Tailwind CSS", "Vercel"],
+      tags: ["TypeScript", "Next.js", "Tailwind CSS", "Vercel"],
       link: "https://gruposerex.com/",
       colSpan: "lg:col-span-1",
       isWide: false,
@@ -88,11 +88,11 @@ export default function Projects() {
       title: "Super Samán App",
       description: "Catálogo digital y aplicación interactiva optimizada para automatización de servicios.",
       image: "/projects/supersaman.png",
-      tags: ["React", "Tailwind CSS", "Netlify"],
-      link: "https://supersaman.netlify.app/",
+      tags: ["JavaScript", "React", "Tailwind CSS", "Netlify"],
+      link: "#",
       colSpan: "lg:col-span-1",
       isWide: false,
-      url: "supersaman.netlify.app",
+      url: "#",
     },
   ];
 
@@ -177,11 +177,10 @@ export default function Projects() {
                       alt={project.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 55vw"
-                      className={`opacity-85 group-hover:opacity-100 transition-all duration-500 ease-out ${
-                        project.objectFit === "contain"
+                      className={`opacity-85 group-hover:opacity-100 transition-all duration-500 ease-out ${project.objectFit === "contain"
                           ? "object-contain p-4"
                           : "object-cover object-top"
-                      }`}
+                        }`}
                     />
                   </div>
 
