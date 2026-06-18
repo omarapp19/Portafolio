@@ -53,7 +53,7 @@ export default function Navbar() {
           className="flex items-center gap-1 group text-white font-medium text-base tracking-tight"
         >
           <span>
-            Omar Pérez<span className="text-emerald-450 font-semibold">.</span>
+            Omar Pérez<span className="text-accent font-semibold">.</span>
           </span>
         </a>
 

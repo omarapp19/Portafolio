@@ -1,59 +1,66 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
+import { Certificate } from "@phosphor-icons/react";
 
-interface TimelineItem {
+interface Certification {
   title: string;
-  subtitle: string;
-  date: string;
-  location?: string;
-  details: string[];
+  issuer: string;
+  link: string;
 }
 
 export default function ExperienceEducation() {
-  const experiences: TimelineItem[] = [
+  const certificationsList: Certification[] = [
     {
-      title: "Senior Full-Stack Developer",
-      subtitle: "Freelance / Consultor de Software",
-      date: "2022 - Presente",
-      location: "Maracaibo, Venezuela (Remoto)",
-      details: [
-        "Arquitectura y desarrollo web escalable con React, Next.js y Node.js.",
-        "Integración de agentes de IA y flujos cognitivos LLM con ThinköAI.",
-        "Automatización de procesos y orquestación de APIs en n8n.",
-        "Infraestructura cloud en Cloudflare R2 y despliegue optimizado en Vercel.",
-      ],
+      title: "Curso Práctico de HTML y CSS",
+      issuer: "Platzi",
+      link: "https://platzi.com/p/omarapp/curso/1758-course/diploma/detalle/",
     },
     {
-      title: "Full-Stack Developer",
-      subtitle: "Agencias & Clientes Corporativos",
-      date: "2020 - 2022",
-      location: "Venezuela (Híbrido)",
-      details: [
-        "Desarrollo de PWAs para control de inventario y stock en retail.",
-        "Modelado de bases de datos ágiles con Firebase Cloud Firestore.",
-        "Migración de backends monolíticos a microservicios en Node.js.",
-      ],
+      title: "Curso Práctico de C++",
+      issuer: "Platzi",
+      link: "https://platzi.com/p/omarapp/curso/1545-course/diploma/detalle/",
     },
-  ];
-
-  const educations: TimelineItem[] = [
     {
-      title: "Ingeniería en Computación / Software",
-      subtitle: "Universidad Rafael Belloso Chacín (URBE)",
-      date: "2021 - Presente",
-      location: "Maracaibo, Zulia, Venezuela",
-      details: [
-        "Cursando último año de carrera y fase final del proyecto de grado.",
-        "Especialización en Ingeniería de Software y Estructuras de Datos.",
-        "Desarrollo de pasarela de pago integrada para plataforma de cursos.",
-      ],
+      title: "Curso de Computación Básica",
+      issuer: "Platzi",
+      link: "https://platzi.com/p/omarapp/curso/1741-course/diploma/detalle/",
+    },
+    {
+      title: "Curso de E-Commerce",
+      issuer: "Platzi",
+      link: "https://platzi.com/p/omarapp/curso/1986-course/diploma/detalle/",
+    },
+    {
+      title: "Curso de Business Model Canvas",
+      issuer: "Platzi",
+      link: "https://platzi.com/p/omarapp/curso/1309-course/diploma/detalle/",
+    },
+    {
+      title: "Curso de Creación de Tiendas en Línea con WooCommerce",
+      issuer: "Platzi",
+      link: "https://platzi.com/p/omarapp/curso/1981-course/diploma/detalle/",
+    },
+    {
+      title: "Python Essentials 1",
+      issuer: "Cisco Networking Academy",
+      link: "https://drive.google.com/file/d/1gkG1UKCtMBk-YJJw5bnhFa06YIvsSjYx/view?usp=sharing",
+    },
+    {
+      title: "Python Essentials 2",
+      issuer: "Cisco Networking Academy",
+      link: "https://drive.google.com/file/d/1uJ6-3MT4sFSbw9me16cjfKqXaWkDMA0m/view?usp=sharing",
     },
   ];
 
   return (
-    <section id="experiencia" className="py-24 px-6 bg-zinc-950 border-t border-zinc-900 font-sans">
-      <div className="max-w-7xl mx-auto">
+    <section id="experiencia" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
+      {/* Ambient glass glowing decorations */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/[0.01] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/3 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/[0.01] rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <motion.h2
@@ -63,122 +70,78 @@ export default function ExperienceEducation() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
           >
-            Trayectoria y Formación
+            Trayectoria y Certificaciones
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
+            className="text-zinc-450 text-sm leading-relaxed max-w-[60ch]"
           >
-            Mi recorrido profesional desarrollando software de alto nivel, sumado a mi formación académica en ingeniería.
+            Mis certificaciones académicas, cursos completados e insignias verificadas que avalan mi formación continua.
           </motion.p>
         </div>
 
-        {/* Two Columns Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Experience Column */}
-          <div className="space-y-12">
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-                Experiencia Profesional
-              </h3>
-            </div>
-
-            <div className="relative border-l border-zinc-900/60 pl-6 ml-3 space-y-10">
-              {experiences.map((exp, i) => (
-                <motion.div
-                  key={exp.title + i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="relative flex flex-col gap-1.5"
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          {/* Certifications Card */}
+          <div className="glass-card p-6 rounded-2xl lg:col-span-2 flex flex-col gap-4">
+            <span className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
+              CURSOS Y CERTIFICADOS
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {certificationsList.map((cert) => (
+                <a
+                  key={cert.title}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 p-3 rounded-xl border border-white/[0.02] bg-zinc-950/20 hover:border-accent/20 hover:bg-zinc-900/10 transition-all duration-300 group"
                 >
-                  {/* Small Timeline Node */}
-                  <span className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
-                    <span className="w-1 h-1 rounded-full bg-emerald-450" />
-                  </span>
-
-                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                    <h4 className="text-base font-semibold text-zinc-100">
-                      {exp.title}
-                    </h4>
-                    <span className="text-[10px] font-mono text-zinc-550 uppercase">
-                      {exp.date}
+                  <div className="text-accent shrink-0 mt-0.5">
+                    <Certificate size={16} />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-xs font-semibold text-zinc-200 group-hover:text-accent transition-colors leading-tight">
+                      {cert.title}
+                    </span>
+                    <span className="text-[9px] text-zinc-550 font-mono">
+                      {cert.issuer}
                     </span>
                   </div>
-
-                  <div className="text-xs text-zinc-450 font-normal">
-                    <span>{exp.subtitle}</span>
-                    {exp.location && (
-                      <span className="text-zinc-650"> &middot; {exp.location}</span>
-                    )}
-                  </div>
-
-                  <ul className="list-none space-y-1.5 pt-1 text-xs text-zinc-400 leading-relaxed">
-                    {exp.details.map((detail, dIdx) => (
-                      <li key={dIdx} className="relative pl-4">
-                        <span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full border border-zinc-900 bg-zinc-950" />
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Education Column */}
-          <div className="space-y-12">
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-                Educación y Formación
-              </h3>
+          {/* Badges Card */}
+          <div className="glass-card p-6 rounded-2xl flex flex-col justify-between gap-6">
+            <div>
+              <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+                LOGROS
+              </span>
+              <h4 className="text-sm font-semibold text-zinc-200 mt-1.5">
+                Insignias Verificadas (Python)
+              </h4>
             </div>
 
-            <div className="relative border-l border-zinc-900/60 pl-6 ml-3 space-y-10">
-              {educations.map((edu, i) => (
-                <motion.div
-                  key={edu.title + i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="relative flex flex-col gap-1.5"
-                >
-                  {/* Small Timeline Node */}
-                  <span className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
-                    <span className="w-1 h-1 rounded-full bg-emerald-450" />
-                  </span>
-
-                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                    <h4 className="text-base font-semibold text-zinc-100">
-                      {edu.title}
-                    </h4>
-                    <span className="text-[10px] font-mono text-zinc-550 uppercase">
-                      {edu.date}
-                    </span>
-                  </div>
-
-                  <div className="text-xs text-zinc-455 font-normal">
-                    <span>{edu.subtitle}</span>
-                    {edu.location && (
-                      <span className="text-zinc-650"> &middot; {edu.location}</span>
-                    )}
-                  </div>
-
-                  <ul className="list-none space-y-1.5 pt-1 text-xs text-zinc-400 leading-relaxed">
-                    {edu.details.map((detail, dIdx) => (
-                      <li key={dIdx} className="relative pl-4">
-                        <span className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full border border-zinc-900 bg-zinc-950" />
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+            <div className="flex-1 flex items-center gap-6 sm:gap-8 justify-center py-4">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 transition-all duration-300 hover:scale-110 filter drop-shadow-[0_0_12px_rgba(99,102,241,0.2)]">
+                <Image
+                  src="/projects/python 1.png"
+                  alt="Python Badge 1"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 transition-all duration-300 hover:scale-110 filter drop-shadow-[0_0_12px_rgba(99,102,241,0.2)]">
+                <Image
+                  src="/projects/python 2.png"
+                  alt="Python Badge 2"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>

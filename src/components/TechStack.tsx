@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Atom, Browser, Palette, Code, Terminal, Cpu, Database, Cloud, Globe, GitBranch, Gear, Robot, Brain, ArrowsClockwise, Link } from "@phosphor-icons/react";
+import { Atom, Browser, Palette, Code, Terminal, Cpu, Database, Cloud, Globe, GitBranch, Gear, Robot, Brain, ArrowsClockwise, Link, Sparkle } from "@phosphor-icons/react";
 
 interface TechItem {
   name: string;
@@ -30,8 +30,7 @@ export default function TechStack() {
       items: [
         { name: "Node.js", level: "Sólido", icon: <Terminal size={18} /> },
         { name: "Express.js", level: "Sólido", icon: <Cpu size={18} /> },
-        { name: "Firebase", level: "Avanzado", icon: <Database size={18} /> },
-        { name: "Cloud Firestore", level: "Avanzado", icon: <Database size={18} /> },
+        { name: "Python", level: "Sólido", icon: <Code size={18} /> },
       ],
     },
     {
@@ -39,6 +38,7 @@ export default function TechStack() {
       items: [
         { name: "Cloudflare R2", level: "Sólido", icon: <Cloud size={18} /> },
         { name: "Vercel", level: "Avanzado", icon: <Globe size={18} /> },
+        { name: "Firebase", level: "Avanzado", icon: <Database size={18} /> },
         { name: "Git / GitHub", level: "Avanzado", icon: <GitBranch size={18} /> },
         { name: "CI/CD Pipelines", level: "Sólido", icon: <ArrowsClockwise size={18} /> },
       ],
@@ -48,6 +48,7 @@ export default function TechStack() {
       items: [
         { name: "n8n", level: "Sólido", icon: <Gear size={18} /> },
         { name: "ThinköAI", level: "Avanzado", icon: <Brain size={18} /> },
+        { name: "Claude (Anthropic)", level: "Avanzado", icon: <Sparkle size={18} /> },
         { name: "Integraciones API", level: "Sólido", icon: <Link size={18} /> },
         { name: "Agentes de IA", level: "Sólido", icon: <Robot size={18} /> },
       ],
@@ -55,8 +56,11 @@ export default function TechStack() {
   ];
 
   return (
-    <section id="tech-stack" className="py-24 px-6 bg-zinc-950 border-t border-zinc-900 font-sans">
-      <div className="max-w-7xl mx-auto">
+    <section id="tech-stack" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
+      {/* Ambient glass glowing decorations */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-500/[0.012] rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <motion.h2
@@ -80,7 +84,7 @@ export default function TechStack() {
         </div>
 
         {/* Visual Blueprint Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, idx) => (
             <motion.div
               key={category.title}
@@ -92,18 +96,18 @@ export default function TechStack() {
                 delay: idx * 0.05,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex flex-col gap-4"
+              className="glass-card p-6 rounded-2xl flex flex-col gap-5 hover:scale-[1.005]"
             >
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 border-b border-white/[0.03] pb-2">
                 {category.title}
               </h3>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2.5">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-zinc-900 bg-zinc-950/40 hover:border-zinc-800 transition-colors duration-300"
+                    className="flex items-center gap-3 p-3 rounded-xl border border-white/[0.02] bg-zinc-950/20 hover:border-accent/20 transition-all duration-300"
                   >
-                    <div className="text-emerald-450 shrink-0">
+                    <div className="text-accent shrink-0">
                       {item.icon}
                     </div>
                     <div className="flex flex-col gap-0.5">

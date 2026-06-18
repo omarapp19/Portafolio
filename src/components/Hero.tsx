@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full h-[100dvh] overflow-hidden bg-black"
+      className="relative w-full h-[100dvh] overflow-hidden bg-transparent"
     >
       {/* Interactive Pong game as the main landing hero */}
       <PromptingIsAllYouNeed
@@ -18,8 +18,8 @@ export default function Hero() {
         <span className="text-[10px] font-bold tracking-widest text-zinc-500 font-mono uppercase animate-pulse">
           Desplazar para explorar
         </span>
-        <div className="w-6 h-10 rounded-full border border-zinc-800 bg-black/40 backdrop-blur-sm flex justify-center p-1">
-          <div className="w-1.5 h-3 bg-emerald-400 rounded-full animate-bounce" />
+        <div className="w-6 h-10 rounded-full border border-zinc-800 bg-background/60 backdrop-blur-sm flex justify-center p-1">
+          <div className="w-1.5 h-3 bg-accent rounded-full animate-bounce" />
         </div>
       </div>
     </section>

@@ -468,20 +468,25 @@ export function PromptingIsAllYouNeed({
     const drawGame = () => {
       if (!ctx) return
 
-      ctx.fillStyle = BACKGROUND_COLOR
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      const isLight = document.documentElement.classList.contains("light")
+      const currentColor = isLight ? "#18181b" : COLOR
+      const currentHitColor = isLight ? "#e4e4e7" : HIT_COLOR
+      const currentBallColor = isLight ? "#4f46e5" : BALL_COLOR
+      const currentPaddleColor = isLight ? "#18181b" : PADDLE_COLOR
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       pixelsRef.current.forEach((pixel) => {
-        ctx.fillStyle = pixel.hit ? HIT_COLOR : COLOR
+        ctx.fillStyle = pixel.hit ? currentHitColor : currentColor
         ctx.fillRect(pixel.x, pixel.y, pixel.size, pixel.size)
       })
 
-      ctx.fillStyle = BALL_COLOR
+      ctx.fillStyle = currentBallColor
       ctx.beginPath()
       ctx.arc(ballRef.current.x, ballRef.current.y, ballRef.current.radius, 0, Math.PI * 2)
       ctx.fill()
 
-      ctx.fillStyle = PADDLE_COLOR
+      ctx.fillStyle = currentPaddleColor
       paddlesRef.current.forEach((paddle) => {
         ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height)
       })

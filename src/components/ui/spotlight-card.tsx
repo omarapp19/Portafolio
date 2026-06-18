@@ -71,13 +71,13 @@ export function SpotlightCard({ children, className = "", maxTilt = 5 }: Spotlig
         rotateY: hasHover ? rotateYSpring : 0,
         transformStyle: "preserve-3d",
       }}
-      className={`group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/10 backdrop-blur-md transition-all duration-300 hover:border-zinc-700/80 hover:shadow-[0_0_50px_rgba(16,185,129,0.04)] ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/10 backdrop-blur-md transition-all duration-300 hover:border-zinc-700/80 hover:shadow-[0_0_50px_rgba(99,102,241,0.04)] ${className}`}
     >
       {/* Background Spotlight Radial Gradient Overlay */}
       <div 
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: `radial-gradient(450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(16, 185, 129, 0.08), transparent 80%)`,
+          background: `radial-gradient(450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(99, 102, 241, 0.08), transparent 80%)`,
         }}
       />
       
@@ -86,7 +86,7 @@ export function SpotlightCard({ children, className = "", maxTilt = 5 }: Spotlig
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 z-30"
         style={{
           border: "1px solid transparent",
-          background: `radial-gradient(220px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(16, 185, 129, 0.35), transparent 70%) border-box`,
+          background: `radial-gradient(220px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(99, 102, 241, 0.35), transparent 70%) border-box`,
           WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",

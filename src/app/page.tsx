@@ -5,15 +5,19 @@ import TechStack from "@/components/TechStack";
 import ExperienceEducation from "@/components/ExperienceEducation";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import BackgroundNebulae from "@/components/ui/BackgroundNebulae";
 
 export default function Home() {
   return (
     <>
+      {/* Slowly drifting background nebulae */}
+      <BackgroundNebulae />
+
       {/* Navigation Bar */}
       <Navbar />
 
       {/* Main Content Sections */}
-      <main className="w-full min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+      <main className="w-full min-h-screen bg-transparent text-zinc-100 flex flex-col relative z-10">
         {/* Hero Section */}
         <Hero />
 
