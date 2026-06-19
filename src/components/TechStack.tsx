@@ -21,6 +21,8 @@ export default function TechStack() {
       items: [
         { name: "React", level: "Sólido", icon: <Atom size={18} /> },
         { name: "Next.js", level: "Avanzado", icon: <Browser size={18} /> },
+        { name: "JavaScript", level: "Avanzado", icon: <Code size={18} /> },
+        { name: "Angular", level: "Sólido", icon: <Code size={18} /> },
         { name: "Tailwind CSS", level: "Sólido", icon: <Palette size={18} /> },
         { name: "TypeScript", level: "Avanzado", icon: <Code size={18} /> },
       ],
@@ -30,7 +32,9 @@ export default function TechStack() {
       items: [
         { name: "Node.js", level: "Sólido", icon: <Terminal size={18} /> },
         { name: "Express.js", level: "Sólido", icon: <Cpu size={18} /> },
+        { name: "Java", level: "Sólido", icon: <Cpu size={18} /> },
         { name: "Python", level: "Sólido", icon: <Code size={18} /> },
+        { name: "MySQL", level: "Sólido", icon: <Database size={18} /> },
       ],
     },
     {
