@@ -7,6 +7,8 @@ export default function BackgroundNebulae() {
   const mouseX = useMotionValue(500);
   const mouseY = useMotionValue(500);
   const [isLight, setIsLight] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Define different springs for each nebula to create a premium fluid-splitting effect
   const spring1X = useSpring(mouseX, { damping: 45, stiffness: 80, mass: 1 });
@@ -19,9 +21,17 @@ export default function BackgroundNebulae() {
   const spring3Y = useSpring(mouseY, { damping: 65, stiffness: 30, mass: 2 });
 
   useEffect(() => {
+    setIsMounted(true);
+    
     // Set to center of viewport initially
     mouseX.set(window.innerWidth / 2);
     mouseY.set(window.innerHeight / 2);
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -37,10 +47,62 @@ export default function BackgroundNebulae() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => {
+      window.removeEventListener("resize", checkMobile);
       window.removeEventListener("mousemove", handleMouseMove);
       observer.disconnect();
     };
   }, [mouseX, mouseY]);
+
+  if (isMounted && isMobile) {
+    return (
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+        {/* Indigo Nebula */}
+        <div
+          className="absolute animate-nebula-1"
+          style={{
+            left: "20%",
+            top: "25%",
+          }}
+        >
+          <div
+            className={`w-[70vw] h-[70vw] rounded-full blur-[90px] transition-colors duration-700 -translate-x-1/2 -translate-y-1/2 ${
+              isLight ? "bg-indigo-400/[0.14]" : "bg-indigo-500/[0.09]"
+            }`}
+          />
+        </div>
+        
+        {/* Deep Indigo Nebula */}
+        <div
+          className="absolute animate-nebula-2"
+          style={{
+            left: "80%",
+            top: "50%",
+          }}
+        >
+          <div
+            className={`w-[85vw] h-[85vw] rounded-full blur-[105px] transition-colors duration-700 -translate-x-1/2 -translate-y-1/2 ${
+              isLight ? "bg-indigo-300/[0.11]" : "bg-indigo-600/[0.07]"
+            }`}
+          />
+        </div>
+        
+        {/* Purple/Indigo Nebula */}
+        <div
+          className="absolute animate-nebula-3"
+          style={{
+            left: "30%",
+            top: "75%",
+          }}
+        >
+          <div
+            className={`w-[75vw] h-[75vw] rounded-full blur-[95px] transition-colors duration-700 -translate-x-1/2 -translate-y-1/2 ${
+              isLight ? "bg-purple-400/[0.10]" : "bg-purple-500/[0.06]"
+            }`}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">

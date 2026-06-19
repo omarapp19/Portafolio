@@ -11,6 +11,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  mobileImage?: string;
   tags: string[];
   link?: string;
   colSpan: string;
@@ -40,6 +41,7 @@ export default function Projects() {
       title: "ASP Worship App APP",
       description: "Aplicación interactiva para coordinar repertorios y acordes en tiempo real.",
       image: "/projects/aspworship.png",
+      mobileImage: "/projects/aspworship-mobil.png",
       tags: ["TypeScript", "React", "Node.js", "Firebase", "Cloudflare R2"],
       link: "https://app.aspworship.online/",
       colSpan: "lg:col-span-1",
@@ -88,6 +90,7 @@ export default function Projects() {
       title: "Super Samán App",
       description: "Catálogo digital y aplicación interactiva optimizada para automatización de servicios.",
       image: "/projects/supersaman.png",
+      mobileImage: "/projects/saman mobil.png",
       tags: ["JavaScript", "React", "Tailwind CSS", "Netlify"],
       link: "#",
       colSpan: "lg:col-span-1",
@@ -171,17 +174,35 @@ export default function Projects() {
               <div key={project.id} className="w-full shrink-0 px-2 sm:px-4">
                 <div className="glass-card group p-6 sm:p-8 rounded-2xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[460px] lg:min-h-[360px] hover:scale-[1.002] transition-transform duration-300">
                   {/* Clean Image Container with Glass Vibe */}
-                  <div className="lg:col-span-7 relative aspect-[16/10] w-full overflow-hidden bg-zinc-950 border border-zinc-900/50 rounded-xl">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                      className={`opacity-85 group-hover:opacity-100 transition-all duration-500 ease-out ${project.objectFit === "contain"
-                          ? "object-contain p-4"
-                          : "object-cover object-top"
-                        }`}
-                    />
+                  <div className="lg:col-span-7 relative aspect-[16/10] w-full">
+                    {/* Main Background Image */}
+                    <div className="absolute inset-0 overflow-hidden bg-zinc-950 border border-zinc-900/50 rounded-xl">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 55vw"
+                        className={`opacity-85 group-hover:opacity-100 transition-all duration-500 ease-out ${project.objectFit === "contain"
+                            ? "object-contain p-4"
+                            : "object-cover object-top"
+                          }`}
+                      />
+                    </div>
+                    
+                    {/* Overlapping Mobile Mockup */}
+                    {project.mobileImage && (
+                      <div className="absolute right-4 sm:right-6 bottom-[-12px] sm:bottom-[-20px] w-[24%] min-w-[70px] max-w-[120px] aspect-[9/19.5] z-20 transition-all duration-500 ease-out group-hover:translate-y-[-10px] group-hover:scale-105 group-hover:rotate-[-2deg] filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.8)]">
+                        <div className="relative w-full h-full rounded-[12px] sm:rounded-[20px] overflow-hidden border-[3px] sm:border-[5px] border-zinc-900 bg-zinc-950">
+                          <Image
+                            src={project.mobileImage}
+                            alt={`${project.title} responsive`}
+                            fill
+                            sizes="15vw"
+                            className="object-cover object-top"
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Text metadata and info */}
