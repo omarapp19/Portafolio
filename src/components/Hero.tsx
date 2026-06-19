@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Interactive Pong game as the main landing hero */}
       <PromptingIsAllYouNeed
         firstLine="OMAR PEREZ"
-        secondLine="SENIOR DEVELOPER" />
+        secondLine="DEVELOPER" />
 
       {/* Floating Scroll Indicator Overlay */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2.5 pointer-events-none">

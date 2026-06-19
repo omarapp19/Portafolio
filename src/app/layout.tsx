@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Omar Pérez | Senior Full-Stack Developer",
-  description: "Portafolio profesional y currículum de Omar Pérez, Senior Full-Stack Developer. Especializado en React, Next.js, Node.js, Firebase y automatización de IA.",
-  keywords: ["Omar Pérez", "Senior Full-Stack Developer", "Next.js", "React", "Node.js", "Tailwind CSS", "Maracaibo", "Venezuela", "Portafolio", "Web Developer"],
+  title: "Omar Pérez | Full-Stack Developer",
+  description: "Portafolio profesional y currículum de Omar Pérez, Full-Stack Developer. Especializado en React, Next.js, Node.js, Firebase y automatización de IA.",
+  keywords: ["Omar Pérez", "Full-Stack Developer", "Next.js", "React", "Node.js", "Tailwind CSS", "Maracaibo", "Venezuela", "Portafolio", "Web Developer"],
   authors: [{ name: "Omar Pérez" }],
   creator: "Omar Pérez",
 };
