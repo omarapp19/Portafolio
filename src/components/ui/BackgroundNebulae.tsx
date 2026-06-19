@@ -65,9 +65,10 @@ export default function BackgroundNebulae() {
           }}
         >
           <div
-            className={`w-[70vw] h-[70vw] rounded-full blur-[90px] transition-colors duration-700 -translate-x-1/2 -translate-y-1/2 ${
-              isLight ? "bg-indigo-400/[0.14]" : "bg-indigo-500/[0.09]"
+            className={`w-[70vw] h-[70vw] rounded-full blur-[55px] transition-colors duration-700 ${
+              isLight ? "bg-indigo-400/[0.24]" : "bg-indigo-500/[0.18]"
             }`}
+            style={{ transform: "translate(-50%, -50%)" }}
           />
         </div>
         
@@ -80,9 +81,10 @@ export default function BackgroundNebulae() {
           }}
         >
           <div
-            className={`w-[85vw] h-[85vw] rounded-full blur-[105px] transition-colors duration-700 -translate-x-1/2 -translate-y-1/2 ${
-              isLight ? "bg-indigo-300/[0.11]" : "bg-indigo-600/[0.07]"
+            className={`w-[85vw] h-[85vw] rounded-full blur-[70px] transition-colors duration-700 ${
+              isLight ? "bg-indigo-300/[0.20]" : "bg-indigo-600/[0.14]"
             }`}
+            style={{ transform: "translate(-50%, -50%)" }}
           />
         </div>
         
@@ -95,9 +97,10 @@ export default function BackgroundNebulae() {
           }}
         >
           <div
-            className={`w-[75vw] h-[75vw] rounded-full blur-[95px] transition-colors duration-700 -translate-x-1/2 -translate-y-1/2 ${
-              isLight ? "bg-purple-400/[0.10]" : "bg-purple-500/[0.06]"
+            className={`w-[75vw] h-[75vw] rounded-full blur-[60px] transition-colors duration-700 ${
+              isLight ? "bg-purple-400/[0.20]" : "bg-purple-500/[0.14]"
             }`}
+            style={{ transform: "translate(-50%, -50%)" }}
           />
         </div>
       </div>
