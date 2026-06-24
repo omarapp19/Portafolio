@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,13 +17,17 @@ export default function Contact() {
 
   const validate = () => {
     const newErrors: typeof errors = {};
-    if (!formData.name.trim()) newErrors.name = "El nombre completo es obligatorio.";
-    if (!formData.email.trim()) {
-      newErrors.email = "El correo electrónico es obligatorio.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Ingresa una dirección de correo electrónico válida.";
+    if (!formData.name.trim()) {
+      newErrors.name = t.contact.errors.name[language];
     }
-    if (!formData.message.trim()) newErrors.message = "El mensaje no puede estar vacío.";
+    if (!formData.email.trim()) {
+      newErrors.email = t.contact.errors.emailReq[language];
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = t.contact.errors.emailVal[language];
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = t.contact.errors.message[language];
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -63,7 +69,7 @@ export default function Contact() {
   return (
     <section id="contacto" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
       {/* Ambient glass glowing decorations */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/[0.012] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.012] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -75,7 +81,7 @@ export default function Contact() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
           >
-            Contacto
+            {t.contact.title[language]}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -84,7 +90,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
           >
-            Escríbeme para colaborar o consultar disponibilidad.
+            {t.contact.subtitle[language]}
           </motion.p>
         </div>
 
@@ -96,7 +102,7 @@ export default function Contact() {
               {/* Name Field */}
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="name" className="text-xs font-medium text-zinc-400">
-                  Nombre Completo
+                  {t.contact.nameLabel[language]}
                 </label>
                 <input
                   type="text"
@@ -110,7 +116,7 @@ export default function Contact() {
                       ? "border-rose-500/80 focus:border-rose-500"
                       : "border-zinc-800 focus:border-accent"
                   }`}
-                  placeholder="Ej. Juan Pérez"
+                  placeholder={t.contact.namePlaceholder[language]}
                 />
                 {errors.name && (
                   <span className="text-xs text-rose-500 mt-1">
@@ -122,7 +128,7 @@ export default function Contact() {
               {/* Email Field */}
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="email" className="text-xs font-medium text-zinc-400">
-                  Correo Electrónico
+                  {t.contact.emailLabel[language]}
                 </label>
                 <input
                   type="email"
@@ -136,7 +142,7 @@ export default function Contact() {
                       ? "border-rose-500/80 focus:border-rose-500"
                       : "border-zinc-800 focus:border-accent"
                   }`}
-                  placeholder="Ej. juan@correo.com"
+                  placeholder={t.contact.emailPlaceholder[language]}
                 />
                 {errors.email && (
                   <span className="text-xs text-rose-500 mt-1">
@@ -148,7 +154,7 @@ export default function Contact() {
               {/* Message Field */}
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="message" className="text-xs font-medium text-zinc-400">
-                  Mensaje
+                  {t.contact.messageLabel[language]}
                 </label>
                 <textarea
                   id="message"
@@ -162,7 +168,7 @@ export default function Contact() {
                       ? "border-rose-500/80 focus:border-rose-500"
                       : "border-zinc-800 focus:border-accent"
                   }`}
-                  placeholder="Cuéntame sobre tu proyecto..."
+                  placeholder={t.contact.messagePlaceholder[language]}
                 />
                 {errors.message && (
                   <span className="text-xs text-rose-500 mt-1">
@@ -174,13 +180,13 @@ export default function Contact() {
               {/* Success & Error Messages */}
               {status === "success" && (
                 <div className="p-4 bg-zinc-900/40 border border-zinc-900 text-xs text-accent rounded-md">
-                  <span>¡Mensaje enviado con éxito! Te responderé muy pronto.</span>
+                  <span>{t.contact.status.success[language]}</span>
                 </div>
               )}
 
               {status === "error" && (
                 <div className="p-4 bg-zinc-900/40 border border-zinc-900 text-xs text-rose-400 rounded-md">
-                  <span>Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.</span>
+                  <span>{t.contact.status.error[language]}</span>
                 </div>
               )}
 
@@ -190,7 +196,7 @@ export default function Contact() {
                 disabled={status === "loading"}
                 className="tap-feedback w-full sm:w-auto inline-flex items-center justify-center px-5 py-2 text-xs font-semibold text-zinc-950 bg-zinc-100 hover:bg-white rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
-                {status === "loading" ? "Enviando..." : "Enviar Mensaje"}
+                {status === "loading" ? t.contact.status.loading[language] : t.contact.status.submit[language]}
               </button>
             </form>
           </div>
@@ -199,12 +205,12 @@ export default function Contact() {
           <div className="lg:col-span-5 glass-card p-8 rounded-2xl flex flex-col justify-between gap-12">
             <div className="space-y-6">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-                Contacto Directo
+                {t.contact.direct[language]}
               </h3>
 
               <div className="grid grid-cols-1 gap-5 pt-2">
                 <div className="border-l border-white/[0.04] pl-4 py-1">
-                  <span className="block text-[9px] font-mono text-zinc-550 uppercase tracking-widest">Email</span>
+                  <span className="block text-[9px] font-mono text-zinc-550 uppercase tracking-widest">{t.contact.email[language]}</span>
                   <a
                     href="mailto:omarapp1921@gmail.com"
                     className="text-xs text-zinc-300 hover:text-accent transition-colors"
@@ -214,7 +220,7 @@ export default function Contact() {
                 </div>
 
                 <div className="border-l border-white/[0.04] pl-4 py-1">
-                  <span className="block text-[9px] font-mono text-zinc-550 uppercase tracking-widest">Teléfono</span>
+                  <span className="block text-[9px] font-mono text-zinc-550 uppercase tracking-widest">{t.contact.phone[language]}</span>
                   <a
                     href="tel:+584246434673"
                     className="text-xs text-zinc-300 hover:text-accent transition-colors"
@@ -224,8 +230,8 @@ export default function Contact() {
                 </div>
 
                 <div className="border-l border-white/[0.04] pl-4 py-1">
-                  <span className="block text-[9px] font-mono text-zinc-550 uppercase tracking-widest">Ubicación</span>
-                  <p className="text-xs text-zinc-300">Maracaibo, Venezuela</p>
+                  <span className="block text-[9px] font-mono text-zinc-550 uppercase tracking-widest">{t.contact.location[language]}</span>
+                  <p className="text-xs text-zinc-300">{t.contact.locationValue[language]}</p>
                 </div>
               </div>
             </div>
@@ -233,7 +239,7 @@ export default function Contact() {
             {/* Social Panel */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-                Redes Sociales
+                {t.contact.socials[language]}
               </h3>
               <div className="flex flex-row gap-5">
                 <a
@@ -268,3 +274,4 @@ export default function Contact() {
     </section>
   );
 }
+

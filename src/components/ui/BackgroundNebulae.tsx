@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useSpring, useScroll, useTransform } from "motion/react";
 
 export default function BackgroundNebulae() {
   const mouseX = useMotionValue(500);
@@ -19,6 +19,12 @@ export default function BackgroundNebulae() {
 
   const spring3X = useSpring(mouseX, { damping: 65, stiffness: 30, mass: 2 });
   const spring3Y = useSpring(mouseY, { damping: 65, stiffness: 30, mass: 2 });
+
+  // Scroll tracking for premium parallax effect on mobile
+  const { scrollY } = useScroll();
+  const scrollY1 = useTransform(scrollY, (value) => value * -0.2);
+  const scrollY2 = useTransform(scrollY, (value) => value * -0.1);
+  const scrollY3 = useTransform(scrollY, (value) => value * -0.3);
 
   useEffect(() => {
     setIsMounted(true);
@@ -57,52 +63,88 @@ export default function BackgroundNebulae() {
     return (
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
         {/* Indigo Nebula */}
-        <div
-          className="absolute animate-nebula-1"
+        <motion.div
+          className="absolute"
           style={{
             left: "20%",
             top: "25%",
+            y: scrollY1,
           }}
         >
-          <div
-            className={`w-[70vw] h-[70vw] rounded-full blur-[55px] transition-colors duration-700 ${
-              isLight ? "bg-indigo-400/[0.24]" : "bg-indigo-500/[0.18]"
-            }`}
-            style={{ transform: "translate(-50%, -50%)" }}
-          />
-        </div>
+          <div className="-translate-x-1/2 -translate-y-1/2">
+            <motion.div
+              animate={{
+                x: [0, 80, -60, 40, 0],
+                y: [0, -70, 80, -30, 0],
+                scale: [1, 1.10, 0.95, 1.05, 1],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className={`w-[70vw] h-[70vw] rounded-full blur-[55px] transition-colors duration-700 ${
+                isLight ? "bg-blue-100/[0.45]" : "bg-blue-500/[0.18]"
+              }`}
+            />
+          </div>
+        </motion.div>
         
         {/* Deep Indigo Nebula */}
-        <div
-          className="absolute animate-nebula-2"
+        <motion.div
+          className="absolute"
           style={{
             left: "80%",
             top: "50%",
+            y: scrollY2,
           }}
         >
-          <div
-            className={`w-[85vw] h-[85vw] rounded-full blur-[70px] transition-colors duration-700 ${
-              isLight ? "bg-indigo-300/[0.20]" : "bg-indigo-600/[0.14]"
-            }`}
-            style={{ transform: "translate(-50%, -50%)" }}
-          />
-        </div>
+          <div className="-translate-x-1/2 -translate-y-1/2">
+            <motion.div
+              animate={{
+                x: [0, -90, 70, -40, 0],
+                y: [0, 80, -60, 50, 0],
+                scale: [1, 1.12, 0.93, 1.07, 1],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className={`w-[85vw] h-[85vw] rounded-full blur-[70px] transition-colors duration-700 ${
+                isLight ? "bg-sky-100/[0.40]" : "bg-sky-600/[0.14]"
+              }`}
+            />
+          </div>
+        </motion.div>
         
         {/* Purple/Indigo Nebula */}
-        <div
-          className="absolute animate-nebula-3"
+        <motion.div
+          className="absolute"
           style={{
             left: "30%",
             top: "75%",
+            y: scrollY3,
           }}
         >
-          <div
-            className={`w-[75vw] h-[75vw] rounded-full blur-[60px] transition-colors duration-700 ${
-              isLight ? "bg-purple-400/[0.20]" : "bg-purple-500/[0.14]"
-            }`}
-            style={{ transform: "translate(-50%, -50%)" }}
-          />
-        </div>
+          <div className="-translate-x-1/2 -translate-y-1/2">
+            <motion.div
+              animate={{
+                x: [0, 70, -80, 50, 0],
+                y: [0, -50, 90, -60, 0],
+                scale: [1, 1.08, 0.96, 1.04, 1],
+              }}
+              transition={{
+                duration: 14,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className={`w-[75vw] h-[75vw] rounded-full blur-[60px] transition-colors duration-700 ${
+                isLight ? "bg-cyan-100/[0.35]" : "bg-cyan-500/[0.14]"
+              }`}
+            />
+          </div>
+        </motion.div>
       </div>
     );
   }
@@ -112,7 +154,7 @@ export default function BackgroundNebulae() {
       {/* Indigo Nebula */}
       <motion.div
         className={`absolute w-[45vw] h-[45vw] max-w-[500px] rounded-full blur-[110px] transition-colors duration-700 ${
-          isLight ? "bg-indigo-400/[0.12]" : "bg-indigo-500/[0.08]"
+          isLight ? "bg-blue-100/[0.30]" : "bg-blue-500/[0.08]"
         }`}
         style={{
           x: spring1X,
@@ -127,7 +169,7 @@ export default function BackgroundNebulae() {
       {/* Deep Indigo Nebula */}
       <motion.div
         className={`absolute w-[50vw] h-[50vw] max-w-[600px] rounded-full blur-[130px] transition-colors duration-700 ${
-          isLight ? "bg-indigo-300/[0.10]" : "bg-indigo-600/[0.06]"
+          isLight ? "bg-sky-100/[0.30]" : "bg-sky-600/[0.06]"
         }`}
         style={{
           x: spring2X,
@@ -142,7 +184,7 @@ export default function BackgroundNebulae() {
       {/* Purple/Indigo Nebula */}
       <motion.div
         className={`absolute w-[42vw] h-[42vw] max-w-[550px] rounded-full blur-[120px] transition-colors duration-700 ${
-          isLight ? "bg-purple-400/[0.08]" : "bg-purple-500/[0.05]"
+          isLight ? "bg-cyan-100/[0.25]" : "bg-cyan-500/[0.05]"
         }`}
         style={{
           x: spring3X,

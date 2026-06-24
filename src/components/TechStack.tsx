@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { Atom, Browser, Palette, Code, Terminal, Cpu, Database, Cloud, Globe, GitBranch, Gear, Robot, Brain, ArrowsClockwise, Link, Sparkle } from "@phosphor-icons/react";
+import TetrisOverlay from "./ui/TetrisOverlay";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TechItem {
   name: string;
@@ -15,54 +17,59 @@ interface Category {
 }
 
 export default function TechStack() {
+  const { language, t } = useLanguage();
+
   const categories: Category[] = [
     {
-      title: "Desarrollo Frontend",
+      title: t.techStack.categories.frontend[language],
       items: [
-        { name: "React", level: "Sólido", icon: <Atom size={18} /> },
-        { name: "Next.js", level: "Avanzado", icon: <Browser size={18} /> },
-        { name: "JavaScript", level: "Avanzado", icon: <Code size={18} /> },
-        { name: "Angular", level: "Sólido", icon: <Code size={18} /> },
-        { name: "Tailwind CSS", level: "Sólido", icon: <Palette size={18} /> },
-        { name: "TypeScript", level: "Avanzado", icon: <Code size={18} /> },
+        { name: "React", level: t.techStack.levels.solid[language], icon: <Atom size={18} /> },
+        { name: "Next.js", level: t.techStack.levels.advanced[language], icon: <Browser size={18} /> },
+        { name: "JavaScript", level: t.techStack.levels.advanced[language], icon: <Code size={18} /> },
+        { name: "Angular", level: t.techStack.levels.solid[language], icon: <Code size={18} /> },
+        { name: "Tailwind CSS", level: t.techStack.levels.solid[language], icon: <Palette size={18} /> },
+        { name: "TypeScript", level: t.techStack.levels.advanced[language], icon: <Code size={18} /> },
       ],
     },
     {
-      title: "Backend & BD",
+      title: t.techStack.categories.backend[language],
       items: [
-        { name: "Node.js", level: "Sólido", icon: <Terminal size={18} /> },
-        { name: "Express.js", level: "Sólido", icon: <Cpu size={18} /> },
-        { name: "Java", level: "Sólido", icon: <Cpu size={18} /> },
-        { name: "Python", level: "Sólido", icon: <Code size={18} /> },
-        { name: "MySQL", level: "Sólido", icon: <Database size={18} /> },
+        { name: "Node.js", level: t.techStack.levels.solid[language], icon: <Terminal size={18} /> },
+        { name: "Express.js", level: t.techStack.levels.solid[language], icon: <Cpu size={18} /> },
+        { name: "Java", level: t.techStack.levels.solid[language], icon: <Cpu size={18} /> },
+        { name: "Python", level: t.techStack.levels.solid[language], icon: <Code size={18} /> },
+        { name: "MySQL", level: t.techStack.levels.solid[language], icon: <Database size={18} /> },
       ],
     },
     {
-      title: "Infraestructura & CI/CD",
+      title: t.techStack.categories.infra[language],
       items: [
-        { name: "Cloudflare R2", level: "Sólido", icon: <Cloud size={18} /> },
-        { name: "Vercel", level: "Avanzado", icon: <Globe size={18} /> },
-        { name: "Firebase", level: "Avanzado", icon: <Database size={18} /> },
-        { name: "Git / GitHub", level: "Avanzado", icon: <GitBranch size={18} /> },
-        { name: "CI/CD Pipelines", level: "Sólido", icon: <ArrowsClockwise size={18} /> },
+        { name: "Cloudflare R2", level: t.techStack.levels.solid[language], icon: <Cloud size={18} /> },
+        { name: "Vercel", level: t.techStack.levels.advanced[language], icon: <Globe size={18} /> },
+        { name: "Firebase", level: t.techStack.levels.advanced[language], icon: <Database size={18} /> },
+        { name: "Git / GitHub", level: t.techStack.levels.advanced[language], icon: <GitBranch size={18} /> },
+        { name: "CI/CD Pipelines", level: t.techStack.levels.solid[language], icon: <ArrowsClockwise size={18} /> },
       ],
     },
     {
-      title: "Automatización & IA",
+      title: t.techStack.categories.automation[language],
       items: [
-        { name: "n8n", level: "Sólido", icon: <Gear size={18} /> },
-        { name: "ThinköAI", level: "Avanzado", icon: <Brain size={18} /> },
-        { name: "Claude (Anthropic)", level: "Avanzado", icon: <Sparkle size={18} /> },
-        { name: "Integraciones API", level: "Sólido", icon: <Link size={18} /> },
-        { name: "Agentes de IA", level: "Sólido", icon: <Robot size={18} /> },
+        { name: "n8n", level: t.techStack.levels.solid[language], icon: <Gear size={18} /> },
+        { name: "ThinköAI", level: t.techStack.levels.advanced[language], icon: <Brain size={18} /> },
+        { name: "Claude (Anthropic)", level: t.techStack.levels.advanced[language], icon: <Sparkle size={18} /> },
+        { name: "Integraciones API", level: t.techStack.levels.solid[language], icon: <Link size={18} /> },
+        { name: "Agentes de IA", level: t.techStack.levels.solid[language], icon: <Robot size={18} /> },
       ],
     },
   ];
 
   return (
     <section id="tech-stack" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
+      {/* Interactive Tetris background overlay */}
+      <TetrisOverlay />
+
       {/* Ambient glass glowing decorations */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-500/[0.012] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/[0.012] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -74,7 +81,7 @@ export default function TechStack() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
           >
-            Habilidades Técnicas
+            {t.techStack.title[language]}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -83,7 +90,7 @@ export default function TechStack() {
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
           >
-            Tecnologías y herramientas que domino para construir soluciones estables y eficientes.
+            {t.techStack.subtitle[language]}
           </motion.p>
         </div>
 
@@ -130,3 +137,4 @@ export default function TechStack() {
     </section>
   );
 }
+

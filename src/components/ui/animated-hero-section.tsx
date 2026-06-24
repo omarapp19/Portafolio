@@ -235,6 +235,7 @@ export function PromptingIsAllYouNeed({
   const paddlesRef = useRef<Paddle[]>([])
   const scaleRef = useRef(1)
   const mouseXRef = useRef<number | null>(null)
+  const lastMouseMoveTimeRef = useRef<number>(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -433,10 +434,12 @@ export function PromptingIsAllYouNeed({
           paddle.targetY = Math.max(0, Math.min(canvas.height - paddle.height, paddle.targetY))
           paddle.y += (paddle.targetY - paddle.y) * 0.1
         } else {
-          // Bottom paddle tracks the mouse if mouse coordinates exist, else it auto-plays
+          // Bottom paddle tracks the mouse if mouse coordinates exist and mouse was recently moved, else it auto-plays
           const isBottomPaddle = paddle.y > canvas.height / 2
-          if (isBottomPaddle && mouseXRef.current !== null) {
-            paddle.targetY = mouseXRef.current - paddle.width / 2
+          const currentMouseX = mouseXRef.current
+          const isMouseActive = currentMouseX !== null && (Date.now() - lastMouseMoveTimeRef.current < 2000)
+          if (isBottomPaddle && isMouseActive) {
+            paddle.targetY = currentMouseX - paddle.width / 2
           } else {
             paddle.targetY = ball.x - paddle.width / 2
           }
@@ -471,7 +474,7 @@ export function PromptingIsAllYouNeed({
       const isLight = document.documentElement.classList.contains("light")
       const currentColor = isLight ? "#18181b" : COLOR
       const currentHitColor = isLight ? "#e4e4e7" : HIT_COLOR
-      const currentBallColor = isLight ? "#4f46e5" : BALL_COLOR
+      const currentBallColor = isLight ? "#2563eb" : BALL_COLOR
       const currentPaddleColor = isLight ? "#18181b" : PADDLE_COLOR
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -501,12 +504,14 @@ export function PromptingIsAllYouNeed({
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
       mouseXRef.current = e.clientX - rect.left
+      lastMouseMoveTimeRef.current = Date.now()
     }
 
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const rect = canvas.getBoundingClientRect()
         mouseXRef.current = e.touches[0].clientX - rect.left
+        lastMouseMoveTimeRef.current = Date.now()
       }
     }
 

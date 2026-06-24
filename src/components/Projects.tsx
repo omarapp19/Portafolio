@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ArrowUpRight, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { motion } from "motion/react";
+import SnakeOverlay from "./ui/SnakeOverlay";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Project {
   id: string;
@@ -21,12 +23,16 @@ interface Project {
 }
 
 export default function Projects() {
+  const { language, t } = useLanguage();
+
   const projectsList: Project[] = [
     {
       id: "01",
-      category: "SITIO WEB",
+      category: language === "es" ? t.projects.categories.website.es : t.projects.categories.website.en,
       title: "ASP Worship (Landing)",
-      description: "Landing page oficial y presentación de la plataforma para coordinación musical.",
+      description: language === "es"
+        ? "Landing page oficial y presentación de la plataforma para coordinación musical."
+        : "Official landing page and presentation of the platform for musical coordination.",
       image: "/projects/worship-app-v2.png",
       tags: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
       link: "https://www.aspworship.online/",
@@ -37,9 +43,11 @@ export default function Projects() {
     },
     {
       id: "02",
-      category: "APLICACIÓN WEB / PWA",
+      category: language === "es" ? t.projects.categories.pwa.es : t.projects.categories.pwa.en,
       title: "ASP Worship App APP",
-      description: "Aplicación interactiva para coordinar repertorios y acordes en tiempo real.",
+      description: language === "es"
+        ? "Aplicación interactiva para coordinar repertorios y acordes en tiempo real."
+        : "Interactive application to coordinate repertoires and chords in real time.",
       image: "/projects/aspworship.png",
       mobileImage: "/projects/aspworship-mobil.png",
       tags: ["TypeScript", "React", "Node.js", "Firebase", "Cloudflare R2"],
@@ -50,9 +58,11 @@ export default function Projects() {
     },
     {
       id: "03",
-      category: "APLICACIÓN WEB",
+      category: language === "es" ? t.projects.categories.webapp.es : t.projects.categories.webapp.en,
       title: "Pizza Builder",
-      description: "Constructor interactivo en tiempo real para personalización de ingredientes y pedidos.",
+      description: language === "es"
+        ? "Constructor interactivo en tiempo real para personalización de ingredientes y pedidos."
+        : "Interactive real-time constructor for ingredient customization and ordering.",
       image: "/projects/pizza-builder-v2.png",
       tags: ["JavaScript", "React", "Tailwind CSS", "Framer Motion"],
       link: "https://pizzabuilder.vercel.app/",
@@ -62,9 +72,11 @@ export default function Projects() {
     },
     {
       id: "04",
-      category: "SITIO WEB",
+      category: language === "es" ? t.projects.categories.website.es : t.projects.categories.website.en,
       title: "Arma tu Antojo",
-      description: "Catálogo interactivo y Progressive Web App optimizada para pedidos móviles.",
+      description: language === "es"
+        ? "Catálogo interactivo y Progressive Web App optimizada para pedidos móviles."
+        : "Interactive catalog and Progressive Web App optimized for mobile orders.",
       image: "/projects/armatuantojo-v2.png",
       tags: ["JavaScript", "React", "Tailwind CSS", "Netlify"],
       link: "https://armatuantojo.netlify.app/",
@@ -74,9 +86,11 @@ export default function Projects() {
     },
     {
       id: "05",
-      category: "PLATAFORMA CORPORATIVA",
+      category: language === "es" ? t.projects.categories.corporate.es : t.projects.categories.corporate.en,
       title: "Grupo Serex",
-      description: "Portal corporativo de consultoría integral optimizado para SEO y alto rendimiento.",
+      description: language === "es"
+        ? "Portal corporativo de consultoría integral optimizado para SEO y alto rendimiento."
+        : "Corporate portal for comprehensive consulting optimized for SEO and high performance.",
       image: "/projects/gruposerex.png",
       tags: ["TypeScript", "Next.js", "Tailwind CSS", "Vercel"],
       link: "https://gruposerex.com/",
@@ -86,9 +100,11 @@ export default function Projects() {
     },
     {
       id: "06",
-      category: "APLICACIÓN WEB / PWA",
+      category: language === "es" ? t.projects.categories.pwa.es : t.projects.categories.pwa.en,
       title: "Super Samán App",
-      description: "Catálogo digital y aplicación interactiva optimizada para automatización de servicios.",
+      description: language === "es"
+        ? "Catálogo digital y aplicación interactiva optimizada para automatización de servicios."
+        : "Digital catalog and interactive application optimized for service automation.",
       image: "/projects/supersaman.png",
       mobileImage: "/projects/saman mobil.png",
       tags: ["JavaScript", "React", "Tailwind CSS", "Netlify"],
@@ -120,9 +136,12 @@ export default function Projects() {
 
   return (
     <section id="proyectos" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
+      {/* Interactive Snake background overlay */}
+      <SnakeOverlay />
+
       {/* Ambient glass glowing decorations */}
-      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/[0.02] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/[0.015] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/[0.02] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.015] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -134,16 +153,16 @@ export default function Projects() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
           >
-            Proyectos Seleccionados
+            {t.projects.title[language]}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-450 text-sm leading-relaxed max-w-[60ch]"
+            className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
           >
-            Una selección de aplicaciones web y de escritorio que demuestran diseño y desarrollo técnico de principio a fin.
+            {t.projects.subtitle[language]}
           </motion.p>
         </div>
 
@@ -240,7 +259,7 @@ export default function Projects() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:text-accent-hover transition-colors"
                         >
-                          Visitar sitio web
+                          {t.projects.visit[language]}
                           <ArrowUpRight size={13} weight="bold" />
                         </a>
                       </div>
@@ -265,7 +284,7 @@ export default function Projects() {
                 className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300"
                 style={{
                   width: currentIndex === index ? "2.5rem" : "0.5rem",
-                  backgroundColor: currentIndex === index ? "rgba(99,102,241,0.2)" : "rgba(var(--white-rgb), 0.1)",
+                  backgroundColor: currentIndex === index ? "rgba(59,130,246,0.2)" : "rgba(var(--white-rgb), 0.1)",
                 }}
               >
                 {currentIndex === index && (
@@ -289,14 +308,14 @@ export default function Projects() {
             <button
               onClick={handlePrev}
               className="p-3 rounded-full border border-white/[0.05] bg-zinc-900/50 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-all duration-300 active:scale-95"
-              aria-label="Proyecto anterior"
+              aria-label={t.projects.prev[language]}
             >
               <CaretLeft size={18} weight="bold" />
             </button>
             <button
               onClick={handleNext}
               className="p-3 rounded-full border border-white/[0.05] bg-zinc-900/50 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-all duration-300 active:scale-95"
-              aria-label="Siguiente proyecto"
+              aria-label={t.projects.next[language]}
             >
               <CaretRight size={18} weight="bold" />
             </button>
@@ -306,3 +325,4 @@ export default function Projects() {
     </section>
   );
 }
+

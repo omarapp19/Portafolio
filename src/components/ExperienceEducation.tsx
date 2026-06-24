@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Certificate } from "@phosphor-icons/react";
+import PacmanOverlay from "./ui/PacmanOverlay";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Certification {
   title: string;
@@ -11,34 +13,36 @@ interface Certification {
 }
 
 export default function ExperienceEducation() {
+  const { language, t } = useLanguage();
+
   const certificationsList: Certification[] = [
     {
-      title: "Curso Práctico de HTML y CSS",
+      title: t.experience.list.c1[language],
       issuer: "Platzi",
       link: "https://platzi.com/p/omarapp/curso/1758-course/diploma/detalle/",
     },
     {
-      title: "Curso Práctico de C++",
+      title: t.experience.list.c2[language],
       issuer: "Platzi",
       link: "https://platzi.com/p/omarapp/curso/1545-course/diploma/detalle/",
     },
     {
-      title: "Curso de Computación Básica",
+      title: t.experience.list.c3[language],
       issuer: "Platzi",
       link: "https://platzi.com/p/omarapp/curso/1741-course/diploma/detalle/",
     },
     {
-      title: "Curso de E-Commerce",
+      title: t.experience.list.c4[language],
       issuer: "Platzi",
       link: "https://platzi.com/p/omarapp/curso/1986-course/diploma/detalle/",
     },
     {
-      title: "Curso de Business Model Canvas",
+      title: t.experience.list.c5[language],
       issuer: "Platzi",
       link: "https://platzi.com/p/omarapp/curso/1309-course/diploma/detalle/",
     },
     {
-      title: "Curso de Creación de Tiendas en Línea con WooCommerce",
+      title: t.experience.list.c6[language],
       issuer: "Platzi",
       link: "https://platzi.com/p/omarapp/curso/1981-course/diploma/detalle/",
     },
@@ -56,9 +60,12 @@ export default function ExperienceEducation() {
 
   return (
     <section id="experiencia" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
+      {/* Interactive Pacman background overlay */}
+      <PacmanOverlay />
+
       {/* Ambient glass glowing decorations */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/[0.01] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/3 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/[0.01] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.01] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/3 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.01] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -70,24 +77,24 @@ export default function ExperienceEducation() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
           >
-            Trayectoria y Certificaciones
+            {t.experience.title[language]}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-450 text-sm leading-relaxed max-w-[60ch]"
+            className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
           >
-            Mis certificaciones académicas, cursos completados e insignias verificadas que avalan mi formación continua.
+            {t.experience.subtitle[language]}
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* Certifications Card */}
           <div className="glass-card p-6 rounded-2xl lg:col-span-2 flex flex-col gap-4">
-            <span className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
-              CURSOS Y CERTIFICADOS
+            <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+              {t.experience.coursesTitle[language]}
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {certificationsList.map((cert) => (
@@ -118,27 +125,29 @@ export default function ExperienceEducation() {
           <div className="glass-card p-6 rounded-2xl flex flex-col justify-between gap-6">
             <div>
               <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
-                LOGROS
+                {t.experience.achievementsTitle[language]}
               </span>
               <h4 className="text-sm font-semibold text-zinc-200 mt-1.5">
-                Insignias Verificadas (Python)
+                {t.experience.badgesTitle[language]}
               </h4>
             </div>
 
             <div className="flex-1 flex items-center gap-6 sm:gap-8 justify-center py-4">
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 transition-all duration-300 hover:scale-110 filter drop-shadow-[0_0_12px_rgba(99,102,241,0.2)]">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 transition-all duration-300 hover:scale-110 filter drop-shadow-[0_0_12px_rgba(59,130,246,0.2)]">
                 <Image
                   src="/projects/python 1.png"
                   alt="Python Badge 1"
                   fill
+                  sizes="128px"
                   className="object-contain"
                 />
               </div>
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 transition-all duration-300 hover:scale-110 filter drop-shadow-[0_0_12px_rgba(99,102,241,0.2)]">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 transition-all duration-300 hover:scale-110 filter drop-shadow-[0_0_12px_rgba(59,130,246,0.2)]">
                 <Image
                   src="/projects/python 2.png"
                   alt="Python Badge 2"
                   fill
+                  sizes="128px"
                   className="object-contain"
                 />
               </div>
@@ -149,3 +158,4 @@ export default function ExperienceEducation() {
     </section>
   );
 }
+

@@ -38,7 +38,7 @@ export default function ThemeToggle() {
     >
       {/* Collapsed State Bar (minimalist sliver peeking out) */}
       <div
-        className={`w-1 h-12 bg-indigo-500/80 rounded-r-md transition-all duration-500 ease-out cursor-pointer shadow-[2px_0_10px_rgba(99,102,241,0.3)] ${
+        className={`w-1 h-12 bg-blue-500/80 rounded-r-md transition-all duration-500 ease-out cursor-pointer shadow-[2px_0_10px_rgba(59,130,246,0.3)] ${
           isHovered ? "opacity-0 -translate-x-full scale-y-75" : "opacity-100 translate-x-0"
         }`}
       />
@@ -62,7 +62,7 @@ export default function ThemeToggle() {
         }`}>
           {/* Sliding active indicator capsule */}
           <motion.div
-            className="absolute w-7 h-7 bg-indigo-500/20 border border-indigo-500/30 rounded-full"
+            className="absolute w-7 h-7 bg-blue-500/20 border border-blue-500/30 rounded-full"
             animate={{
               y: theme === "light" ? 0 : 38, // 28px button + 10px gap
             }}
@@ -74,7 +74,7 @@ export default function ThemeToggle() {
             onClick={() => toggleTheme("light")}
             className={`w-7 h-7 flex items-center justify-center rounded-full transition-colors z-10 ${
               theme === "light"
-                ? "text-indigo-600"
+                ? "text-blue-600"
                 : "text-zinc-500 hover:text-zinc-300"
             }`}
             aria-label="Modo claro"
@@ -87,7 +87,7 @@ export default function ThemeToggle() {
             onClick={() => toggleTheme("dark")}
             className={`w-7 h-7 flex items-center justify-center rounded-full transition-colors z-10 ${
               theme === "dark"
-                ? "text-indigo-400"
+                ? "text-blue-400"
                 : "text-zinc-400 hover:text-zinc-600"
             }`}
             aria-label="Modo oscuro"

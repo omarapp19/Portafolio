@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import { List, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,11 +23,11 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Proyectos", href: "#proyectos" },
-    { name: "Tech Stack", href: "#tech-stack" },
-    { name: "Trayectoria", href: "#experiencia" },
-    { name: "Contacto", href: "#contacto" },
+    { name: t.navbar.inicio[language], href: "#inicio" },
+    { name: t.navbar.proyectos[language], href: "#proyectos" },
+    { name: t.navbar.techStack[language], href: "#tech-stack" },
+    { name: t.navbar.trayectoria[language], href: "#experiencia" },
+    { name: t.navbar.contacto[language], href: "#contacto" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -74,8 +76,29 @@ export default function Navbar() {
             onClick={(e) => handleLinkClick(e, "#contacto")}
             className="tap-feedback inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-medium tracking-wide text-zinc-300 hover:text-white bg-zinc-950 border border-zinc-800 hover:border-zinc-700 rounded-md transition-all duration-300"
           >
-            Contáctame
+            {t.navbar.contactame[language]}
           </a>
+
+          {/* Language Switcher */}
+          <div className="flex items-center gap-2 border-l border-zinc-800 pl-4 h-4 text-[10px] font-mono select-none">
+            <button
+              onClick={() => setLanguage("es")}
+              className={`transition-colors cursor-pointer ${
+                language === "es" ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              ES
+            </button>
+            <span className="text-zinc-800">/</span>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`transition-colors cursor-pointer ${
+                language === "en" ? "text-white font-semibold" : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              EN
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -104,7 +127,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.href)}
-                  className="text-sm font-medium text-zinc-450 hover:text-zinc-100 py-1.5 transition-colors"
+                  className="text-sm font-medium text-zinc-400 hover:text-zinc-100 py-1.5 transition-colors"
                 >
                   {item.name}
                 </a>
@@ -114,8 +137,38 @@ export default function Navbar() {
                 onClick={(e) => handleLinkClick(e, "#contacto")}
                 className="tap-feedback w-full inline-flex items-center justify-center py-2 text-xs font-medium text-zinc-300 hover:text-white bg-zinc-950 border border-zinc-800 rounded-md transition-colors mt-2"
               >
-                Contáctame
+                {t.navbar.contactame[language]}
               </a>
+
+              {/* Mobile Language Switcher */}
+              <div className="flex items-center gap-4 mt-4 pt-4 border-t border-zinc-900/65 text-xs font-mono">
+                <button
+                  onClick={() => {
+                    setLanguage("es");
+                    setIsOpen(false);
+                  }}
+                  className={`flex-1 py-1.5 rounded border text-center transition-colors cursor-pointer ${
+                    language === "es"
+                      ? "bg-zinc-900 border-zinc-800 text-white font-medium"
+                      : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  }`}
+                >
+                  ESPAÑOL
+                </button>
+                <button
+                  onClick={() => {
+                    setLanguage("en");
+                    setIsOpen(false);
+                  }}
+                  className={`flex-1 py-1.5 rounded border text-center transition-colors cursor-pointer ${
+                    language === "en"
+                      ? "bg-zinc-900 border-zinc-800 text-white font-medium"
+                      : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  }`}
+                >
+                  ENGLISH
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
@@ -123,3 +176,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

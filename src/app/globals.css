@@ -29,8 +29,8 @@
   --card-shadow-inner-hover: rgba(255, 255, 255, 0.1);
   --card-shadow-outer-hover: rgba(0, 0, 0, 0.4);
   
-  --accent: #6366f1; /* indigo-500 */
-  --accent-hover: #818cf8; /* indigo-400 */
+  --accent: #3b82f6; /* blue-500 */
+  --accent-hover: #60a5fa; /* blue-400 */
   
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -64,8 +64,8 @@
   --card-shadow-inner-hover: rgba(255, 255, 255, 0.9);
   --card-shadow-outer-hover: rgba(9, 9, 11, 0.03);
   
-  --accent: #4f46e5; /* indigo-600 */
-  --accent-hover: #3730a3; /* indigo-800 */
+  --accent: #2563eb; /* blue-600 */
+  --accent-hover: #1d4ed8; /* blue-700 */
 }
 
 @theme inline {
@@ -157,28 +157,6 @@ body {
   box-shadow: inset 0 1px 0 0 var(--card-shadow-inner-hover), 0 12px 40px var(--card-shadow-outer-hover);
 }
 
-/* Floating Nebulae animations */
-@keyframes float-nebula-1 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(60px, 40px) scale(1.08); }
-}
-@keyframes float-nebula-2 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(-80px, 50px) scale(0.92); }
-}
-@keyframes float-nebula-3 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(50px, -60px) scale(1.05); }
-}
 
-.animate-nebula-1 {
-  animation: float-nebula-1 25s ease-in-out infinite;
-}
-.animate-nebula-2 {
-  animation: float-nebula-2 30s ease-in-out infinite;
-}
-.animate-nebula-3 {
-  animation: float-nebula-3 28s ease-in-out infinite;
-}
 
 
