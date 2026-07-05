@@ -111,6 +111,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   disabled={status === "loading"}
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                   className={`w-full py-2 bg-transparent border-b text-sm text-zinc-100 placeholder-zinc-700 transition-colors focus:outline-none rounded-none ${
                     errors.name
                       ? "border-rose-500/80 focus:border-rose-500"
@@ -119,7 +121,7 @@ export default function Contact() {
                   placeholder={t.contact.namePlaceholder[language]}
                 />
                 {errors.name && (
-                  <span className="text-xs text-rose-500 mt-1">
+                  <span id="name-error" className="text-xs text-rose-500 mt-1">
                     {errors.name}
                   </span>
                 )}
@@ -137,6 +139,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   disabled={status === "loading"}
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
                   className={`w-full py-2 bg-transparent border-b text-sm text-zinc-100 placeholder-zinc-700 transition-colors focus:outline-none rounded-none ${
                     errors.email
                       ? "border-rose-500/80 focus:border-rose-500"
@@ -145,7 +149,7 @@ export default function Contact() {
                   placeholder={t.contact.emailPlaceholder[language]}
                 />
                 {errors.email && (
-                  <span className="text-xs text-rose-500 mt-1">
+                  <span id="email-error" className="text-xs text-rose-500 mt-1">
                     {errors.email}
                   </span>
                 )}
@@ -163,6 +167,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   disabled={status === "loading"}
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : undefined}
                   className={`w-full py-2 bg-transparent border-b text-sm text-zinc-100 placeholder-zinc-700 transition-colors focus:outline-none rounded-none resize-none ${
                     errors.message
                       ? "border-rose-500/80 focus:border-rose-500"
@@ -171,7 +177,7 @@ export default function Contact() {
                   placeholder={t.contact.messagePlaceholder[language]}
                 />
                 {errors.message && (
-                  <span className="text-xs text-rose-500 mt-1">
+                  <span id="message-error" className="text-xs text-rose-500 mt-1">
                     {errors.message}
                   </span>
                 )}

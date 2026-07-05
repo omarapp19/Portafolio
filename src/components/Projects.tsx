@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ArrowUpRight, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { motion } from "motion/react";
-import SnakeOverlay from "./ui/SnakeOverlay";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface Project {
@@ -113,6 +112,36 @@ export default function Projects() {
       isWide: false,
       url: "#",
     },
+    {
+      id: "07",
+      category: language === "es" ? t.projects.categories.impact.es : t.projects.categories.impact.en,
+      title: "Proyecto Nehemías",
+      description: language === "es"
+        ? "Plataforma de gestión humanitaria y transparencia radical para comunidades afectadas por los terremotos en Venezuela, con balance público auditable, comprobantes y fotos de cada entrega."
+        : "Humanitarian management platform with radical transparency for communities affected by Venezuela's earthquakes, featuring a publicly auditable balance, receipts, and delivery photos.",
+      image: "/projects/nehemias2026.png",
+      tags: ["Next.js", "Express", "PostgreSQL", "Prisma", "Turborepo"],
+      link: "https://nehemias2026.com/",
+      colSpan: "lg:col-span-1",
+      isWide: false,
+      url: "nehemias2026.com",
+      objectFit: "contain",
+    },
+    {
+      id: "08",
+      category: language === "es" ? t.projects.categories.impact.es : t.projects.categories.impact.en,
+      title: "Unidos (Centros de Acopio)",
+      description: language === "es"
+        ? "Plataforma cívica sin fines de lucro que conecta a la ciudadanía con los centros de acopio activos tras el terremoto de junio 2026, con mapa geolocalizado y estadísticas de donación en tiempo real."
+        : "Nonprofit civic platform connecting citizens with active donation centers after the June 2026 earthquake, featuring a geolocated map and real-time donation statistics.",
+      image: "/projects/unidos-centros-acopio.png",
+      tags: ["React", "TypeScript", "Supabase", "Vercel"],
+      link: "https://centrodeacopiovenezuela.com/",
+      colSpan: "lg:col-span-1",
+      isWide: false,
+      url: "centrodeacopiovenezuela.com",
+      objectFit: "contain",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -136,9 +165,6 @@ export default function Projects() {
 
   return (
     <section id="proyectos" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
-      {/* Interactive Snake background overlay */}
-      <SnakeOverlay />
-
       {/* Ambient glass glowing decorations */}
       <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/[0.02] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.015] rounded-full blur-3xl pointer-events-none" />
@@ -207,7 +233,7 @@ export default function Projects() {
                           }`}
                       />
                     </div>
-                    
+
                     {/* Overlapping Mobile Mockup */}
                     {project.mobileImage && (
                       <div className="absolute right-4 sm:right-6 bottom-[-12px] sm:bottom-[-20px] w-[24%] min-w-[70px] max-w-[120px] aspect-[9/19.5] z-20 transition-all duration-500 ease-out group-hover:translate-y-[-10px] group-hover:scale-105 group-hover:rotate-[-2deg] filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.8)]">

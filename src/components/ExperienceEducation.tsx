@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Certificate } from "@phosphor-icons/react";
-import PacmanOverlay from "./ui/PacmanOverlay";
+import { Certificate, GraduationCap } from "@phosphor-icons/react";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface Certification {
@@ -60,9 +59,6 @@ export default function ExperienceEducation() {
 
   return (
     <section id="experiencia" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
-      {/* Interactive Pacman background overlay */}
-      <PacmanOverlay />
-
       {/* Ambient glass glowing decorations */}
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.01] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/3 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-blue-500/[0.01] rounded-full blur-3xl pointer-events-none" />
@@ -88,6 +84,27 @@ export default function ExperienceEducation() {
           >
             {t.experience.subtitle[language]}
           </motion.p>
+        </div>
+
+        {/* Education Card */}
+        <div className="glass-card p-6 rounded-2xl mb-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div className="text-accent shrink-0">
+            <GraduationCap size={26} />
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+              {t.experience.educationTitle[language]}
+            </span>
+            <h4 className="text-sm font-semibold text-zinc-100">
+              {t.experience.degree[language]}
+            </h4>
+            <span className="text-xs text-zinc-400">
+              Universidad Rafael Belloso Chacín (URBE)
+            </span>
+          </div>
+          <span className="sm:ml-auto inline-flex w-fit items-center text-[10px] font-mono uppercase tracking-wider text-accent border border-accent/30 rounded-full px-3 py-1">
+            {t.experience.degreeStatus[language]}
+          </span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">

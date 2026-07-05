@@ -36,6 +36,7 @@ export const translations = {
       pwa: { es: "APLICACIÓN WEB / PWA", en: "WEB APP / PWA" },
       webapp: { es: "APLICACIÓN WEB", en: "WEB APP" },
       corporate: { es: "PLATAFORMA CORPORATIVA", en: "CORPORATE PLATFORM" },
+      impact: { es: "PLATAFORMA DE IMPACTO SOCIAL", en: "SOCIAL IMPACT PLATFORM" },
     },
     visit: { es: "Visitar sitio web", en: "Visit website" },
     prev: { es: "Proyecto anterior", en: "Previous project" },
@@ -65,6 +66,9 @@ export const translations = {
       en: "My academic certifications, completed courses, and verified badges validating my continuous learning.",
     },
     coursesTitle: { es: "CURSOS Y CERTIFICADOS", en: "COURSES & CERTIFICATES" },
+    educationTitle: { es: "FORMACIÓN ACADÉMICA", en: "ACADEMIC EDUCATION" },
+    degree: { es: "Ingeniería en Informática", en: "Computer Engineering" },
+    degreeStatus: { es: "Último año", en: "Final year" },
     achievementsTitle: { es: "LOGROS", en: "ACHIEVEMENTS" },
     badgesTitle: { es: "Insignias Verificadas (Python)", en: "Verified Badges (Python)" },
     list: {

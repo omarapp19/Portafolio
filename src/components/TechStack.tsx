@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Atom, Browser, Palette, Code, Terminal, Cpu, Database, Cloud, Globe, GitBranch, Gear, Robot, Brain, ArrowsClockwise, Link, Sparkle } from "@phosphor-icons/react";
-import TetrisOverlay from "./ui/TetrisOverlay";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface TechItem {
@@ -29,6 +28,7 @@ export default function TechStack() {
         { name: "Angular", level: t.techStack.levels.solid[language], icon: <Code size={18} /> },
         { name: "Tailwind CSS", level: t.techStack.levels.solid[language], icon: <Palette size={18} /> },
         { name: "TypeScript", level: t.techStack.levels.advanced[language], icon: <Code size={18} /> },
+        { name: "WordPress", level: t.techStack.levels.solid[language], icon: <Globe size={18} /> },
       ],
     },
     {
@@ -39,6 +39,9 @@ export default function TechStack() {
         { name: "Java", level: t.techStack.levels.solid[language], icon: <Cpu size={18} /> },
         { name: "Python", level: t.techStack.levels.solid[language], icon: <Code size={18} /> },
         { name: "MySQL", level: t.techStack.levels.solid[language], icon: <Database size={18} /> },
+        { name: "PostgreSQL", level: t.techStack.levels.solid[language], icon: <Database size={18} /> },
+        { name: "Prisma", level: t.techStack.levels.solid[language], icon: <Database size={18} /> },
+        { name: "Supabase", level: t.techStack.levels.solid[language], icon: <Database size={18} /> },
       ],
     },
     {
@@ -65,9 +68,6 @@ export default function TechStack() {
 
   return (
     <section id="tech-stack" className="relative overflow-hidden py-24 px-6 bg-transparent border-t border-zinc-900/50 font-sans">
-      {/* Interactive Tetris background overlay */}
-      <TetrisOverlay />
-
       {/* Ambient glass glowing decorations */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/[0.012] rounded-full blur-3xl pointer-events-none" />
 

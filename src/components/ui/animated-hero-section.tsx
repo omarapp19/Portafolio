@@ -255,7 +255,8 @@ export function PromptingIsAllYouNeed({
       const scale = scaleRef.current
       const LARGE_PIXEL_SIZE = 8 * scale
       const SMALL_PIXEL_SIZE = 4 * scale
-      const BALL_SPEED = 6 * scale
+
+      const BALL_SPEED = 6.2 * scale
 
       pixelsRef.current = []
       const words = [firstLine.toUpperCase(), secondLine.toUpperCase()]
@@ -293,12 +294,12 @@ export function PromptingIsAllYouNeed({
           wordIndex === 0
             ? calculateWordWidth(word, adjustedLargePixelSize)
             : words[1].split(" ").reduce((width, w, index) => {
-                return (
-                  width +
-                  calculateWordWidth(w, adjustedSmallPixelSize) +
-                  (index > 0 ? WORD_SPACING * adjustedSmallPixelSize : 0)
-                )
-              }, 0)
+              return (
+                width +
+                calculateWordWidth(w, adjustedSmallPixelSize) +
+                (index > 0 ? WORD_SPACING * adjustedSmallPixelSize : 0)
+              )
+            }, 0)
 
         let startX = (canvas.width - totalWidth) / 2
 
@@ -350,7 +351,7 @@ export function PromptingIsAllYouNeed({
         y: ballStartY,
         dx: -BALL_SPEED,
         dy: BALL_SPEED,
-        radius: adjustedLargePixelSize / 2,
+        radius: Math.max(adjustedLargePixelSize / 2, 7),
       }
 
       const paddleWidth = adjustedLargePixelSize
