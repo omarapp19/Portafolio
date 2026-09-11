@@ -53,18 +53,19 @@ export default function Navbar() {
         <a
           href="#inicio"
           onClick={(e) => handleLinkClick(e, "#inicio")}
-          className="flex items-center gap-2.5 group text-white font-medium text-base tracking-tight"
+          className="flex items-center gap-3 group text-white font-medium text-base tracking-tight"
         >
-          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-zinc-800 ring-1 ring-zinc-700/60 group-hover:ring-accent/50 transition-all shrink-0">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-zinc-800 ring-1 ring-zinc-700/60 group-hover:ring-accent/50 transition-all shrink-0 shadow-sm">
             <Image
               src="/Omar.jpg"
               alt="Omar Pérez"
               fill
-              sizes="28px"
+              sizes="(max-width: 640px) 36px, 40px"
               className="object-cover object-top"
+              priority
             />
           </div>
-          <span>
+          <span className="font-semibold sm:text-lg">
             Omar Pérez<span className="text-accent font-semibold">.</span>
           </span>
         </a>
