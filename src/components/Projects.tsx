@@ -142,6 +142,36 @@ export default function Projects() {
       url: "centrodeacopiovenezuela.com",
       objectFit: "contain",
     },
+    {
+      id: "09",
+      category: language === "es" ? t.projects.categories.website.es : t.projects.categories.website.en,
+      title: "Kabod 102.1 FM",
+      description: language === "es"
+        ? "Landing page y plataforma web de transmisión radial en vivo 24/7 para Kabod 102.1 FM, con reproductor en tiempo real, parrilla de programación y contenido devocional."
+        : "Official landing page and 24/7 live streaming web platform for Kabod 102.1 FM, featuring a real-time audio player, weekly schedule, and devotional content.",
+      image: "/projects/Macbook-Air-kabod1021.vercel.app.png",
+      mobileImage: "/projects/Samsung-Galaxy-S20-kabod1021.vercel.app.png",
+      tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "Audio Streaming"],
+      link: "https://kabod1021.vercel.app/",
+      colSpan: "lg:col-span-1",
+      isWide: false,
+      url: "kabod1021.vercel.app",
+    },
+    {
+      id: "10",
+      category: language === "es" ? t.projects.categories.android.es : t.projects.categories.android.en,
+      title: "Radio Kabod 102.1 FM App",
+      description: language === "es"
+        ? "Aplicación móvil Android para sintonizar la señal radial en directo en alta calidad (128 kbps), con temporizador de apagado, acceso a WhatsApp de cabina y peticiones de oración."
+        : "Native Android mobile app for streaming live radio in high quality (128 kbps), featuring a sleep timer, direct studio WhatsApp access, and prayer requests.",
+      image: "/projects/kabod app.png",
+      tags: ["Android", "Audio Streaming", "Mobile UI", "Radio Player"],
+      link: "https://kabod1021.vercel.app/",
+      colSpan: "lg:col-span-1",
+      isWide: false,
+      url: "kabod1021.vercel.app",
+      objectFit: "contain",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

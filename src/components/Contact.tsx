@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -208,7 +209,38 @@ export default function Contact() {
           </div>
 
           {/* Right Side: Contact Info & Socials */}
-          <div className="lg:col-span-5 glass-card p-8 rounded-2xl flex flex-col justify-between gap-12">
+          <div className="lg:col-span-5 glass-card p-8 rounded-2xl flex flex-col justify-between gap-10">
+            {/* Profile Header with Photo & Availability */}
+            <div className="flex items-center gap-4 pb-6 border-b border-zinc-900/80">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-zinc-800 ring-2 ring-accent/20 shrink-0 bg-zinc-900 shadow-xl">
+                <Image
+                  src="/Omar.jpg"
+                  alt="Omar Pérez"
+                  fill
+                  sizes="80px"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <div className="inline-flex items-center gap-2 text-[10px] font-mono text-emerald-400 uppercase tracking-wider">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span>{language === "es" ? "Disponible para proyectos" : "Available for work"}</span>
+                </div>
+                <h3 className="text-lg font-bold text-zinc-100 tracking-tight">
+                  Omar Pérez
+                </h3>
+                <p className="text-xs text-zinc-400 font-normal">
+                  {language === "es"
+                    ? "Desarrollador Full Stack & Estudiante de Ingeniería en Informática"
+                    : "Full Stack Developer & Computer Engineering Student"}
+                </p>
+              </div>
+            </div>
+
             <div className="space-y-6">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
                 {t.contact.direct[language]}

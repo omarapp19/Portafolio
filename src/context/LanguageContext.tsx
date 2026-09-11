@@ -37,6 +37,7 @@ export const translations = {
       webapp: { es: "APLICACIÓN WEB", en: "WEB APP" },
       corporate: { es: "PLATAFORMA CORPORATIVA", en: "CORPORATE PLATFORM" },
       impact: { es: "PLATAFORMA DE IMPACTO SOCIAL", en: "SOCIAL IMPACT PLATFORM" },
+      android: { es: "APP ANDROID", en: "ANDROID APP" },
     },
     visit: { es: "Visitar sitio web", en: "Visit website" },
     prev: { es: "Proyecto anterior", en: "Previous project" },

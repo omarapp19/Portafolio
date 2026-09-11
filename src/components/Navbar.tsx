@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -52,8 +53,17 @@ export default function Navbar() {
         <a
           href="#inicio"
           onClick={(e) => handleLinkClick(e, "#inicio")}
-          className="flex items-center gap-1 group text-white font-medium text-base tracking-tight"
+          className="flex items-center gap-2.5 group text-white font-medium text-base tracking-tight"
         >
+          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-zinc-800 ring-1 ring-zinc-700/60 group-hover:ring-accent/50 transition-all shrink-0">
+            <Image
+              src="/Omar.jpg"
+              alt="Omar Pérez"
+              fill
+              sizes="28px"
+              className="object-cover object-top"
+            />
+          </div>
           <span>
             Omar Pérez<span className="text-accent font-semibold">.</span>
           </span>

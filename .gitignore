@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local test contact submissions
 submissions.json
+
+# ide & agent settings
+.claude/
