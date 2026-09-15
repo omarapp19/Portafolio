@@ -28,7 +28,6 @@ export default function Navbar() {
     { name: t.navbar.proyectos[language], href: "#proyectos" },
     { name: t.navbar.techStack[language], href: "#tech-stack" },
     { name: t.navbar.trayectoria[language], href: "#experiencia" },
-    { name: t.navbar.contacto[language], href: "#contacto" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
