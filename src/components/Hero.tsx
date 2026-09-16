@@ -2,6 +2,7 @@
 
 import { PromptingIsAllYouNeed } from "./ui/animated-hero-section";
 import { useLanguage } from "@/context/LanguageContext";
+import ThreeElement from "./ui/ThreeElement";
 
 export default function Hero() {
   const { language, t } = useLanguage();
@@ -20,6 +21,9 @@ export default function Hero() {
       <PromptingIsAllYouNeed
         firstLine="OMAR PEREZ"
         secondLine={t.hero.developer[language]} />
+
+      {/* 3D Element Background */}
+      <ThreeElement />
 
       {/* Floating Scroll Indicator Overlay */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2.5 pointer-events-none">

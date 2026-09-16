@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowUpRight, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useDesign } from "@/context/DesignContext";
 
 interface Project {
   id: string;
@@ -23,6 +24,7 @@ interface Project {
 
 export default function Projects() {
   const { language, t } = useLanguage();
+  const { designMode } = useDesign();
 
   const projectsList: Project[] = [
     {
@@ -247,7 +249,7 @@ export default function Projects() {
           >
             {projectsList.map((project) => (
               <div key={project.id} className="w-full shrink-0 px-2 sm:px-4">
-                <div className="glass-card group p-6 sm:p-8 rounded-2xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[460px] lg:min-h-[360px] hover:scale-[1.002] transition-transform duration-300">
+                <div className={`${designMode === "neo" ? "neo-card" : "glass-card"} group p-6 sm:p-8 rounded-2xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[460px] lg:min-h-[360px] hover:scale-[1.002] transition-transform duration-300`}>
                   {/* Clean Image Container with Glass Vibe */}
                   <div className="lg:col-span-7 relative aspect-[16/10] w-full">
                     {/* Main Background Image */}

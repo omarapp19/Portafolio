@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { Certificate, GraduationCap } from "@phosphor-icons/react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useDesign } from "@/context/DesignContext";
 
 interface Certification {
   title: string;
@@ -13,6 +14,7 @@ interface Certification {
 
 export default function ExperienceEducation() {
   const { language, t } = useLanguage();
+  const { designMode } = useDesign();
 
   const certificationsList: Certification[] = [
     {
@@ -87,7 +89,7 @@ export default function ExperienceEducation() {
         </div>
 
         {/* Education Card */}
-        <div className="glass-card p-6 rounded-2xl mb-6 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className={`${designMode === "neo" ? "neo-card" : "glass-card"} p-6 rounded-2xl mb-6 flex flex-col sm:flex-row sm:items-center gap-4`}>
           <div className="text-accent shrink-0">
             <GraduationCap size={26} />
           </div>
@@ -109,7 +111,7 @@ export default function ExperienceEducation() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* Certifications Card */}
-          <div className="glass-card p-6 rounded-2xl lg:col-span-2 flex flex-col gap-4">
+          <div className={`${designMode === "neo" ? "neo-card" : "glass-card"} p-6 rounded-2xl lg:col-span-2 flex flex-col gap-4`}>
             <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
               {t.experience.coursesTitle[language]}
             </span>
@@ -139,7 +141,7 @@ export default function ExperienceEducation() {
           </div>
 
           {/* Badges Card */}
-          <div className="glass-card p-6 rounded-2xl flex flex-col justify-between gap-6">
+          <div className={`${designMode === "neo" ? "neo-card" : "glass-card"} p-6 rounded-2xl flex flex-col justify-between gap-6`}>
             <div>
               <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
                 {t.experience.achievementsTitle[language]}

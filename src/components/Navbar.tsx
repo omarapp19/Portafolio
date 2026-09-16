@@ -2,14 +2,17 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, Sparkle, Cube } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useDesign } from "@/context/DesignContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
   const { language, setLanguage, t } = useLanguage();
+  const { designMode, toggleDesignMode, setDesignMode } = useDesign();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +42,23 @@ export default function Navbar() {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const newCount = logoClicks + 1;
+    setLogoClicks(newCount);
+    
+    if (newCount === 5) {
+      toggleDesignMode();
+      setLogoClicks(0);
+    }
+    
+    setTimeout(() => {
+      setLogoClicks(0);
+    }, 2000); // Reset clicks if they take too long
+    
+    handleLinkClick(e, "#inicio");
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 font-sans transition-all duration-300 ${
@@ -51,7 +71,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <a
           href="#inicio"
-          onClick={(e) => handleLinkClick(e, "#inicio")}
+          onClick={handleLogoClick}
           className="flex items-center gap-3 group text-white font-medium text-base tracking-tight"
         >
           <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-zinc-800 ring-1 ring-zinc-700/60 group-hover:ring-accent/50 transition-all shrink-0 shadow-sm">
@@ -109,6 +129,34 @@ export default function Navbar() {
               EN
             </button>
           </div>
+
+          {/* Design Mode Switcher (Glass / Neo) */}
+          <div className="flex items-center gap-1 border-l border-zinc-800 pl-3 text-[10px] font-mono select-none">
+            <button
+              onClick={() => setDesignMode("glass")}
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded transition-all cursor-pointer ${
+                designMode === "glass"
+                  ? "text-blue-400 bg-zinc-800/80 font-semibold shadow-sm"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+              title="Estilo Glassmorphism"
+            >
+              <Sparkle size={11} weight={designMode === "glass" ? "fill" : "regular"} />
+              <span>Glass</span>
+            </button>
+            <button
+              onClick={() => setDesignMode("neo")}
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded transition-all cursor-pointer ${
+                designMode === "neo"
+                  ? "text-blue-400 bg-zinc-800/80 font-semibold shadow-sm"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+              title="Estilo Neomorphism"
+            >
+              <Cube size={11} weight={designMode === "neo" ? "fill" : "regular"} />
+              <span>Neo</span>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -150,8 +198,40 @@ export default function Navbar() {
                 {t.navbar.contactame[language]}
               </a>
 
+              {/* Mobile Design Mode Switcher */}
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-zinc-900/65 text-xs font-mono">
+                <button
+                  onClick={() => {
+                    setDesignMode("glass");
+                    setIsOpen(false);
+                  }}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded border text-center transition-colors cursor-pointer ${
+                    designMode === "glass"
+                      ? "bg-zinc-900 border-zinc-800 text-blue-400 font-medium"
+                      : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  }`}
+                >
+                  <Sparkle size={13} weight={designMode === "glass" ? "fill" : "regular"} />
+                  <span>GLASS</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setDesignMode("neo");
+                    setIsOpen(false);
+                  }}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded border text-center transition-colors cursor-pointer ${
+                    designMode === "neo"
+                      ? "bg-zinc-900 border-zinc-800 text-blue-400 font-medium"
+                      : "border-transparent text-zinc-500 hover:text-zinc-300"
+                  }`}
+                >
+                  <Cube size={13} weight={designMode === "neo" ? "fill" : "regular"} />
+                  <span>NEO</span>
+                </button>
+              </div>
+
               {/* Mobile Language Switcher */}
-              <div className="flex items-center gap-4 mt-4 pt-4 border-t border-zinc-900/65 text-xs font-mono">
+              <div className="flex items-center gap-4 mt-2 pt-2 border-t border-zinc-900/40 text-xs font-mono">
                 <button
                   onClick={() => {
                     setLanguage("es");

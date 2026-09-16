@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { DesignProvider } from "@/context/DesignContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,8 +67,10 @@ export default function RootLayout({
       </head>
       <body className="bg-background text-foreground min-h-screen selection:bg-blue-500/30 selection:text-blue-300">
         <LanguageProvider>
-          {children}
-          <ThemeToggle />
+          <DesignProvider>
+            {children}
+            <ThemeToggle />
+          </DesignProvider>
         </LanguageProvider>
       </body>
     </html>

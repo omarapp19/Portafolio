@@ -61,7 +61,7 @@ export default function BackgroundNebulae() {
 
   if (isMounted && isMobile) {
     return (
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+      <div id="background-nebulae" className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
         {/* Indigo Nebula */}
         <motion.div
           className="absolute"
@@ -150,7 +150,7 @@ export default function BackgroundNebulae() {
   }
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+    <div id="background-nebulae" className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
       {/* Indigo Nebula */}
       <motion.div
         className={`absolute w-[45vw] h-[45vw] max-w-[500px] rounded-full blur-[110px] transition-colors duration-700 ${
