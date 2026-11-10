@@ -309,3 +309,6 @@ body.neo-mode #background-nebulae,
 body.neo-mode [class*="bg-blue-500/"] {
   display: none !important;
 }
+
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }

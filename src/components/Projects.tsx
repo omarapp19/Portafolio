@@ -174,6 +174,33 @@ export default function Projects() {
       url: "kabod1021.vercel.app",
       objectFit: "contain",
     },
+    {
+      id: "11",
+      category: language === "es" ? "Tienda en línea" : "Online store",
+      title: "Valkar C.A.",
+      description: language === "es"
+        ? "Tienda en línea de lubricantes y repuestos automotrices con búsqueda por vehículo, precios en dólares y bolívares a tasa BCV, venta al detal y al mayor, pedidos y pagos conectados al ERP."
+        : "Online store for automotive lubricants and spare parts with search by vehicle, prices in USD and bolivars at the BCV rate, retail and wholesale sales, and orders and payments connected to the ERP.",
+      image: "/projects/valkar-tienda.png",
+      tags: ["React", "Vite", "Tailwind CSS", "Supabase", "Vercel"],
+      link: "https://tienda.valkar.com.ve",
+      colSpan: "lg:col-span-1",
+      isWide: false,
+      url: "tienda.valkar.com.ve",
+    },
+    {
+      id: "12",
+      category: language === "es" ? "Sistema de gestión (ERP)" : "Management system (ERP)",
+      title: "Analista de Pagos ERP",
+      description: language === "es"
+        ? "Sistema de gestión para comercios: punto de venta, inventario y kardex, compras y proveedores, cuentas por cobrar y por pagar, calendario de pagos, estadísticas y asistente de IA para importar ventas. Maneja bolívares y dólares con tasas BCV."
+        : "Business management system: point of sale, inventory and kardex, purchasing and suppliers, receivables and payables, payment calendar, analytics and an AI assistant to import sales. Handles bolivars and dollars with BCV exchange rates.",
+      image: "/projects/erp-analista-de-pagos.png",
+      tags: ["React", "Vite", "Tailwind CSS", "Supabase", "Recharts", "PWA"],
+      colSpan: "lg:col-span-1",
+      isWide: false,
+      url: "",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -209,7 +236,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
+            className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4 leading-[1.05]"
           >
             {t.projects.title[language]}
           </motion.h2>
@@ -218,7 +245,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
+            className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-[60ch]"
           >
             {t.projects.subtitle[language]}
           </motion.p>
@@ -284,15 +311,15 @@ export default function Projects() {
 
                   {/* Text metadata and info */}
                   <div className="lg:col-span-5 flex flex-col gap-3.5">
-                    <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+                    <span className="text-xs tracking-wide text-zinc-400 uppercase">
                       {project.id} &mdash; {project.category}
                     </span>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-zinc-100 group-hover:text-accent transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-50 leading-tight group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                    <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                       {project.description}
                     </p>
 
@@ -301,7 +328,7 @@ export default function Projects() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-mono text-zinc-500"
+                          className="text-xs text-zinc-400"
                         >
                           {tag}
                         </span>
@@ -315,7 +342,7 @@ export default function Projects() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:text-accent-hover transition-colors"
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
                         >
                           {t.projects.visit[language]}
                           <ArrowUpRight size={13} weight="bold" />

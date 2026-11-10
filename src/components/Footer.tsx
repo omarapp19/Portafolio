@@ -1,14 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import {
-  LauraHeart,
-  CatatumboBridge,
-  MusicGuitar,
-  CrossedLightsabers,
-  MinecraftBlock,
-  MasterChiefHelmet,
-} from "./ui/SubtleEasterEggs";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -35,20 +27,12 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-transparent border-t border-zinc-900/60 py-8 px-6 mt-auto font-sans">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-400">
         <div>
           <span>&copy; {currentYear} Omar Pérez. {t.footer.rights[language]}</span>
-          <span className="text-[9px] text-zinc-700/60 block mt-1.5 font-mono select-none">
+          <span className="text-xs text-zinc-700/60 block mt-1.5 select-none">
             {t.footer.credits[language]}
           </span>
-          <div className="flex items-center gap-2.5 mt-2 opacity-60 hover:opacity-100 transition-opacity duration-500">
-            <LauraHeart />
-            <CatatumboBridge />
-            <MusicGuitar />
-            <CrossedLightsabers />
-            <MinecraftBlock />
-            <MasterChiefHelmet />
-          </div>
         </div>
 
         <div className="flex flex-col items-center sm:items-end gap-3.5">

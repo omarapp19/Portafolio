@@ -13,35 +13,20 @@ interface DesignContextType {
 const DesignContext = createContext<DesignContextType | undefined>(undefined);
 
 export function DesignProvider({ children }: { children: React.ReactNode }) {
-  const [designMode, setDesignMode] = useState<DesignMode>("glass");
+  // Style switching removed: fixed to "glass".
+  const [designMode] = useState<DesignMode>("glass");
 
   useEffect(() => {
-    const savedMode = localStorage.getItem("designMode") as DesignMode;
-    if (savedMode === "neo" || savedMode === "glass") {
-      setDesignMode(savedMode);
-    }
+    document.body.classList.remove("neo-mode");
+    try {
+      localStorage.removeItem("designMode");
+    } catch {}
   }, []);
 
-  const changeDesignMode = (mode: DesignMode) => {
-    setDesignMode(mode);
-    localStorage.setItem("designMode", mode);
-  };
-
-  const toggleDesignMode = () => {
-    const nextMode = designMode === "glass" ? "neo" : "glass";
-    changeDesignMode(nextMode);
-  };
-
-  useEffect(() => {
-    if (designMode === "neo") {
-      document.body.classList.add("neo-mode");
-    } else {
-      document.body.classList.remove("neo-mode");
-    }
-  }, [designMode]);
+  const noop = () => {};
 
   return (
-    <DesignContext.Provider value={{ designMode, toggleDesignMode, setDesignMode: changeDesignMode }}>
+    <DesignContext.Provider value={{ designMode, toggleDesignMode: noop, setDesignMode: noop }}>
       {children}
     </DesignContext.Provider>
   );

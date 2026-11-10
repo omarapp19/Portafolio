@@ -496,10 +496,11 @@ export function PromptingIsAllYouNeed({
       })
     }
 
+    let rafId = 0
     const gameLoop = () => {
       updateGame()
       drawGame()
-      requestAnimationFrame(gameLoop)
+      rafId = requestAnimationFrame(gameLoop)
     }
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -529,6 +530,7 @@ export function PromptingIsAllYouNeed({
     gameLoop()
 
     return () => {
+      cancelAnimationFrame(rafId)
       window.removeEventListener("resize", resizeCanvas)
       canvas.removeEventListener("mousemove", handleMouseMove)
       canvas.removeEventListener("touchmove", handleTouchMove)

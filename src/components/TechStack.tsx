@@ -79,7 +79,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
+            className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4 leading-[1.05]"
           >
             {t.techStack.title[language]}
           </motion.h2>
@@ -88,7 +88,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
+            className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-[60ch]"
           >
             {t.techStack.subtitle[language]}
           </motion.p>
@@ -109,7 +109,7 @@ export default function TechStack() {
               }}
               className="glass-card p-6 rounded-2xl flex flex-col gap-5 hover:scale-[1.005]"
             >
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 border-b border-white/[0.03] pb-2">
+              <h3 className="text-xs uppercase tracking-wide text-zinc-400 border-b border-white/[0.03] pb-2">
                 {category.title}
               </h3>
               <div className="flex flex-col gap-2.5">
@@ -122,8 +122,8 @@ export default function TechStack() {
                       {item.icon}
                     </div>
                     <div className="flex flex-col gap-0.5">
-                      <span className="text-xs font-semibold text-zinc-200">{item.name}</span>
-                      <span className="text-[9px] text-zinc-550 font-mono tracking-wider uppercase">
+                      <span className="text-sm font-semibold text-zinc-100">{item.name}</span>
+                      <span className="text-xs text-zinc-400 tracking-wide uppercase">
                         {item.level}
                       </span>
                     </div>

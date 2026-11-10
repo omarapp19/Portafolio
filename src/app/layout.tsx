@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ThemeToggle from "@/components/ThemeToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { DesignProvider } from "@/context/DesignContext";
 
@@ -69,7 +68,6 @@ export default function RootLayout({
         <LanguageProvider>
           <DesignProvider>
             {children}
-            <ThemeToggle />
           </DesignProvider>
         </LanguageProvider>
       </body>

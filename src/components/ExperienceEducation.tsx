@@ -73,7 +73,7 @@ export default function ExperienceEducation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3"
+            className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4 leading-[1.05]"
           >
             {t.experience.title[language]}
           </motion.h2>
@@ -82,7 +82,7 @@ export default function ExperienceEducation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-zinc-455 text-sm leading-relaxed max-w-[60ch]"
+            className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-[60ch]"
           >
             {t.experience.subtitle[language]}
           </motion.p>
@@ -94,17 +94,17 @@ export default function ExperienceEducation() {
             <GraduationCap size={26} />
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+            <span className="text-xs tracking-wide text-zinc-400 uppercase">
               {t.experience.educationTitle[language]}
             </span>
-            <h4 className="text-sm font-semibold text-zinc-100">
+            <h4 className="text-lg font-semibold text-zinc-50">
               {t.experience.degree[language]}
             </h4>
-            <span className="text-xs text-zinc-400">
+            <span className="text-sm text-zinc-300">
               Universidad Rafael Belloso Chacín (URBE)
             </span>
           </div>
-          <span className="sm:ml-auto inline-flex w-fit items-center text-[10px] font-mono uppercase tracking-wider text-accent border border-accent/30 rounded-full px-3 py-1">
+          <span className="sm:ml-auto inline-flex w-fit items-center text-xs uppercase tracking-wide text-accent border border-accent/30 rounded-full px-3 py-1">
             {t.experience.degreeStatus[language]}
           </span>
         </div>
@@ -112,7 +112,7 @@ export default function ExperienceEducation() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* Certifications Card */}
           <div className={`${designMode === "neo" ? "neo-card" : "glass-card"} p-6 rounded-2xl lg:col-span-2 flex flex-col gap-4`}>
-            <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+            <span className="text-xs tracking-wide text-zinc-400 uppercase">
               {t.experience.coursesTitle[language]}
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -128,10 +128,10 @@ export default function ExperienceEducation() {
                     <Certificate size={16} />
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-xs font-semibold text-zinc-200 group-hover:text-accent transition-colors leading-tight">
+                    <span className="text-sm font-semibold text-zinc-100 group-hover:text-accent transition-colors leading-tight">
                       {cert.title}
                     </span>
-                    <span className="text-[9px] text-zinc-550 font-mono">
+                    <span className="text-sm text-zinc-300">
                       {cert.issuer}
                     </span>
                   </div>
@@ -143,10 +143,10 @@ export default function ExperienceEducation() {
           {/* Badges Card */}
           <div className={`${designMode === "neo" ? "neo-card" : "glass-card"} p-6 rounded-2xl flex flex-col justify-between gap-6`}>
             <div>
-              <span className="text-[10px] font-mono tracking-widest text-zinc-550 uppercase">
+              <span className="text-xs tracking-wide text-zinc-400 uppercase">
                 {t.experience.achievementsTitle[language]}
               </span>
-              <h4 className="text-sm font-semibold text-zinc-200 mt-1.5">
+              <h4 className="text-base font-semibold text-zinc-100 mt-1.5">
                 {t.experience.badgesTitle[language]}
               </h4>
             </div>
